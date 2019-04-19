@@ -5,20 +5,12 @@ using UnityEngine;
 public class ArrowScrip : MonoBehaviour
 {
 	private Vector3 PosIni;
-    // Start is called before the first frame update
-    void Start()
-    {
-    	/*
-    	parentBone = GameObject.Find("LeftHandArrow");
-        transform.parent = parentBone.transform;
-        */
-    }
-
+	private float  vel;
     // Update is called once per frame
     void Update()
     {
         if(transform.parent == null) {
-        	transform.Translate(Vector3.right * 4 * Time.deltaTime);
+        	transform.Translate(Vector3.right * vel * Time.deltaTime);
         	if (Vector3.Distance(transform.position, PosIni) > 13) Destroy(gameObject);
         }
     }
@@ -29,12 +21,13 @@ public class ArrowScrip : MonoBehaviour
     	PosIni = transform.position;
     }
 
-    void OnTriggerEnter (Collider col)
+    public void setVel(float vel) 
     {
-    	if (col.gameObject.CompareTag("enemy"))
-    	{
-    		col.gameObject.GetComponent<Health>().health -= 100;
-    		Destroy(gameObject);
-    	}    	
+    	this.vel = vel;
+    }
+
+    public void setDmg(float dmg)
+    {
+    	transform.Find("HitBox").GetComponent<Hit>().setDmg(dmg);
     }
 }

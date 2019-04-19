@@ -6,4 +6,5 @@ public class ArcherStats : MonoBehaviour
 {
 	public float dmg;
 	public float AttackSpeed;
+	public float vel;
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hit : MonoBehaviour
 {
     // Start is called before the first frame update
+    private float dmg;
     void Start()
     {
         
@@ -20,8 +21,13 @@ public class Hit : MonoBehaviour
     {
     	if (col.gameObject.CompareTag("enemy"))
     	{
-    		col.gameObject.GetComponent<Health>().health -= 100;
-    		Destroy(gameObject);
+    		col.gameObject.GetComponent<Health>().health -= dmg;
+    		Destroy(transform.parent.gameObject);
     	}    	
+    }
+
+    public void setDmg(float dmg)
+    {
+    	this.dmg = dmg;
     }
 }
