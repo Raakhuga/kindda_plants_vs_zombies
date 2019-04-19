@@ -32,7 +32,9 @@ public class ArcherCnt : MonoBehaviour
     	anim.SetBool("Shoot", false);
     	Transform t = transform.Find("Hips/Spine/Spine1/Spine2/RightShoulder/RightArm/RightForeArm/RightHand").gameObject.transform;
     	newArrow = Instantiate(Arrow, t.position, t.rotation);
-    	newArrow.transform.parent = transform.Find("Hips/Spine/Spine1/Spine2/RightShoulder/RightArm/RightForeArm/RightHand").gameObject.transform;
+    	newArrow.transform.parent = t.gameObject.transform;
+    	newArrow.GetComponent<ArrowScrip>().setVel(asts.vel);
+    	newArrow.GetComponent<ArrowScrip>().setDmg(asts.dmg);
     }
 
     void Shoot()
