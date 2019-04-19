@@ -6,27 +6,39 @@ public class ArcherCnt : MonoBehaviour
 {
 	private Animator anim;
 	private ArcherStats asts;
-	private float time;
+	private float nextShoot;
+	public GameObject Arrow;
+	private GameObject newArrow;
+
     // Start is called before the first frame update
     void Start()
     {
         asts = GetComponent<ArcherStats>();
         anim = GetComponent<Animator>();
-        time = 0;
+        nextShoot = Time.time + asts.AttackSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (time <= 0) {
+        if (Time.time > nextShoot) {
         	anim.SetBool("Shoot", true);
-        	time = asts.AttackSpeed;
+        	nextShoot = Time.time + asts.AttackSpeed + 100;
         }
-        //time -= 1/60.f;
     }
 
     void ResetShoot()
     {
     	anim.SetBool("Shoot", false);
+    	Transform t = transform.Find("Hips/Spine/Spine1/Spine2/RightShoulder/RightArm/RightForeArm/RightHand").gameObject.transform;
+    	newArrow = Instantiate(Arrow, t.position, t.rotation);
+    	newArrow.transform.parent = transform.Find("Hips/Spine/Spine1/Spine2/RightShoulder/RightArm/RightForeArm/RightHand").gameObject.transform;
     }
+
+    void Shoot()
+    {
+    	nextShoot = Time.time + asts.AttackSpeed;
+    	newArrow.GetComponent<ArrowScrip>().releaseArrow();
+   } 
+
 }
