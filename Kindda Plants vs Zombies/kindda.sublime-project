@@ -3,7 +3,7 @@
  [
   {
   "follow_symlinks": true,
-  "path": "Assets/Scripts",
+  "path": "C:/Users/Raakhuga/Documents/git/kindda_plants_vs_zombies/Kindda Plants vs Zombies/Assets/Scripts",
    "file_exclude_patterns":
    [
     "*.dll",
@@ -11,5 +11,5 @@
    ]
   }
  ],
- "solution_file": "./Kindda Plants vs Zombies.sln"
+ "solution_file": "C:/Users/Raakhuga/Documents/git/kindda_plants_vs_zombies/Kindda Plants vs Zombies/Kindda Plants vs Zombies.sln"
 }
