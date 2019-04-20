@@ -18,8 +18,8 @@ public class InitMap : MonoBehaviour
                 GameObject TyleType = Tile1;
                 if ((i + j) % 2 == 0) TyleType = Tile2;
                 map[i * 5 + j] = Instantiate(TyleType, new Vector3(i, 0.0f, j), Quaternion.identity) as GameObject;
-                map[i * 5 + j].tag = "Tile";
                 map[i * 5 + j].name = "tile " + i + " " + j;
+                map[i * 5 + j].tag = "tile";
             }
         }
     }

@@ -14,21 +14,21 @@ public class mouseOver : MonoBehaviour
 
     void OnMouseOver()
     {
-        //hover = true;
-        //if (GetComponent<Renderer>().CompareTag("tile"))
-        //{
-        //    GetComponent<Renderer>().material.shader = hoverShader;
-        //    Debug.Log("Mouse is over a tile.");
-        //}
+        hover = true;
+        if (GetComponent<Renderer>().CompareTag("tile"))
+        {
+            GetComponent<Renderer>().material.shader = hoverShader;
+            Debug.Log("Mouse is over a tile.");
+        }
     }
 
     void OnMouseExit()
     {
-        //hover = false;
-        //if (GetComponent<Renderer>().CompareTag("tile"))
-        //{
-        //    GetComponent<Renderer>().material.shader = shader;
-        //    Debug.Log("Mouse is no longer on tile.");
-        //}
+        hover = false;
+        if (GetComponent<Renderer>().CompareTag("tile"))
+        {
+            GetComponent<Renderer>().material.shader = shader;
+            Debug.Log("Mouse is no longer on tile.");
+        }
     }
 }
