@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InitMap : MonoBehaviour
+public class Map : MonoBehaviour
 {
     public GameObject Tile1;
     public GameObject Tile2;
-    private GameObject[] map;
+    public GameObject[] map;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +20,8 @@ public class InitMap : MonoBehaviour
                 map[i * 5 + j] = Instantiate(TyleType, new Vector3(i, 0.0f, j), Quaternion.identity) as GameObject;
                 map[i * 5 + j].name = "tile " + i + " " + j;
                 map[i * 5 + j].tag = "tile";
+                map[i * 5 + j].GetComponent<TileParams>().x = i;
+                map[i * 5 + j].GetComponent<TileParams>().y = j;
             }
         }
     }
