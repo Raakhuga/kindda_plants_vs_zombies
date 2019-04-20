@@ -42,7 +42,10 @@ public class ZombieMCtrl : MonoBehaviour
     	anim.SetBool("Attack", false);
     	nextAttack = Time.time + s.AttackSpeed;
     	col.GetComponent<Health>().health -= s.dmg;
-		if (col.GetComponent<Health>().health <= 0) canMove = true;
+		if (col.GetComponent<Health>().health <= 0) {
+			canMove = true;
+			anim.SetBool("CanMove", true);
+		}
 		this.col = null;
     }
 }

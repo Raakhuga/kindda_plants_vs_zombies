@@ -3854,7 +3854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worth: 0
   dmg: 15
-  vel: 2
+  vel: 0.5
   AttackSpeed: 1
 --- !u!114 &1403847517
 MonoBehaviour:
@@ -5779,6 +5779,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8958305400724712146, guid: 8b9efb018beb13b418672e9efae882c1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8958305400724712146, guid: 8b9efb018beb13b418672e9efae882c1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 3114598776795792722, guid: 8b9efb018beb13b418672e9efae882c1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5848,16 +5858,6 @@ PrefabInstance:
         type: 3}
       propertyPath: dmg
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8958305400724712146, guid: 8b9efb018beb13b418672e9efae882c1,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8958305400724712146, guid: 8b9efb018beb13b418672e9efae882c1,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8958305400724712109, guid: 8b9efb018beb13b418672e9efae882c1,
         type: 3}
