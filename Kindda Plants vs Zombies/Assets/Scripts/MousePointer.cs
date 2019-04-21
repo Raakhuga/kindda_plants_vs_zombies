@@ -74,14 +74,14 @@ public class MousePointer : MonoBehaviour
             buttonDown = true;
         }
 
-        if (currentTile != null && Input.GetMouseButtonUp(0) && buttonDown)
+        if (currentTile != null && Input.GetMouseButtonUp(0) && buttonDown
+            && !currentTile.GetComponent<TileParams>().activeUnit)
         {
             buttonDown = false;
             Vector3 pos = currentTile.transform.position;
             pos.y = 0.06f;
-            newArcher = Instantiate(Archer,  pos, Archer.transform.rotation);
+            newArcher = Instantiate(Archer, pos, Archer.transform.rotation);
+            currentTile.GetComponent<TileParams>().activeUnit = true;
         }
-
     }
-
 }

@@ -22,6 +22,7 @@ public class Map : MonoBehaviour
                 map[i * 5 + j].tag = "tile";
                 map[i * 5 + j].GetComponent<TileParams>().x = i;
                 map[i * 5 + j].GetComponent<TileParams>().y = j;
+                map[i * 5 + j].GetComponent<TileParams>().activeUnit = false;
             }
         }
     }
