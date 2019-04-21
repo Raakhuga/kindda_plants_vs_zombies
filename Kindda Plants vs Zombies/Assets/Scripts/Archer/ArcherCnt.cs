@@ -41,6 +41,7 @@ public class ArcherCnt : MonoBehaviour
     {
     	nextShoot = Time.time + asts.AttackSpeed;
     	newArrow.GetComponent<ArrowScrip>().releaseArrow();
+        newArrow = null;
    } 
 
 }

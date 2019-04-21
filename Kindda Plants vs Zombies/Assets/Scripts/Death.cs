@@ -18,7 +18,9 @@ public class Death : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (h.health <= 0) Destroy(gameObject);
-        if (CompareTag("enemy")) r.resources += s.worth;//dinerico
+        if (h.health <= 0) {
+            if (CompareTag("enemy")) r.resources += s.worth;
+            Destroy(gameObject);
+        }
     }
 }
