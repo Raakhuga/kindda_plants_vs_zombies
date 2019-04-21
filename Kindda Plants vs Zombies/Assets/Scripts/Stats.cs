@@ -6,5 +6,6 @@ public class Stats : MonoBehaviour
 {
 	public float worth;
 	public float dmg;
-	public float MS;
+	public float vel;
+	public float AttackSpeed;
 }

@@ -15,7 +15,7 @@ public class EnemyMov : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(canMove)transform.Translate(Vector3.left * s.MS * Time.deltaTime);
+        if(canMove)transform.Translate(Vector3.left * s.vel * Time.deltaTime);
     }
 
     void OnTriggerStay (Collider col) 

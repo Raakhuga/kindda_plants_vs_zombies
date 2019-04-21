@@ -15,7 +15,7 @@ public class ProjectileMov : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.right * s.MS * Time.deltaTime);
+        transform.Translate(Vector3.right * s.vel * Time.deltaTime);
         if (Vector3.Distance(transform.position, PosIni) > 13) Destroy(gameObject);
     }
 
