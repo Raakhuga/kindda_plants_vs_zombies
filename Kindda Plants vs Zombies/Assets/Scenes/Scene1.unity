@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 310037034}
   m_Layer: 0
   m_Name: GameController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -787,6 +787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tile1: {fileID: 2881746519353080722, guid: 6c8b7d91ecb9251438e953f06ed63217, type: 3}
   Tile2: {fileID: 6765285728262090029, guid: 6cdc6900bd811d640b9f47ce5d91d51f, type: 3}
+  map: []
 --- !u!114 &310037035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,6 +800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a78964b03b2e46e4bb622ba21bd07de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Archer: {fileID: 1486385969041459730, guid: 8b9efb018beb13b418672e9efae882c1, type: 3}
 --- !u!1 &335906363
 GameObject:
   m_ObjectHideFlags: 0

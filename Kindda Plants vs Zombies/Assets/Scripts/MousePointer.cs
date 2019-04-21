@@ -3,8 +3,11 @@
 public class MousePointer : MonoBehaviour
 {
 
-    Shader stdShader, selectedShader, hoverShader;
+    private Shader stdShader, selectedShader, hoverShader;
     private Renderer currentTile;
+    private bool buttonDown;
+    public GameObject Archer;
+    private GameObject newArcher;
 
     void Start()
     {
@@ -12,6 +15,7 @@ public class MousePointer : MonoBehaviour
         selectedShader = Shader.Find("Custom/SelectedObject");
         hoverShader = Shader.Find("Custom/HoverObject");
         currentTile = null;
+        buttonDown = false;
     }
 
     private void setTileShaders(GameObject initTile, Shader sh)
@@ -64,6 +68,20 @@ public class MousePointer : MonoBehaviour
         }
         Debug.Log(currentTile == null ? "No tile selected."
             : "Tile " + currentTile.gameObject.name + " selected");
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            buttonDown = true;
+        }
+
+        if (currentTile != null && Input.GetMouseButtonUp(0) && buttonDown)
+        {
+            buttonDown = false;
+            Vector3 pos = currentTile.transform.position;
+            pos.y = 0.06f;
+            newArcher = Instantiate(Archer,  pos, Archer.transform.rotation);
+        }
+
     }
 
 }
