@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 888062533943026374}
   - component: {fileID: 888062533943026393}
   - component: {fileID: 888062533943026392}
-  - component: {fileID: 888062533943026372}
+  - component: {fileID: 8305123416386895912}
   m_Layer: 0
   m_Name: HitBox
   m_TagString: enemy
@@ -109,7 +109,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &888062533943026372
+--- !u!114 &8305123416386895912
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 888062533943026394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 429632815b502334a96e5f6e6d95889d, type: 3}
+  m_Script: {fileID: 11500000, guid: cb8185feb33bb2c42b342629cc1ec3b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &888062534140793985
@@ -131,10 +131,9 @@ GameObject:
   m_Component:
   - component: {fileID: 888062534140823713}
   - component: {fileID: 888062534133409477}
-  - component: {fileID: 888062532306528078}
-  - component: {fileID: 888062532306528076}
   - component: {fileID: 888062532306528077}
   - component: {fileID: 888062532306528075}
+  - component: {fileID: 2312528365505029898}
   m_Layer: 0
   m_Name: zombie
   m_TagString: enemy
@@ -178,31 +177,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &888062532306528078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888062534140793985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99dab78f130ec8e4d98e11dd27c2f603, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
---- !u!114 &888062532306528076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888062534140793985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d689320fec43e2845bf8ae71b2ce977f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &888062532306528077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,10 +189,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260317cbf9ac27b4b8229a33dfbc9197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worth: 25
+  health: 100
   dmg: 15
-  vel: 0.5
   AttackSpeed: 1
+  vel: 0.5
+  range: 1
+  gold: 5
 --- !u!114 &888062532306528075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +207,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3980a6c0b44dc8d4fbdc087d17e06c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2312528365505029898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888062534140793985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3259751a11f542f4b884f69d313a1726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movileUnit: 1
+  shooter: 0
+  projectile: {fileID: 0}
 --- !u!1 &888062534140793989
 GameObject:
   m_ObjectHideFlags: 0
