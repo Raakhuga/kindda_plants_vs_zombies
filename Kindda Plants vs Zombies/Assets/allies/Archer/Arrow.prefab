@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2116292973532315963}
   - component: {fileID: 9020542251276587971}
   - component: {fileID: 6298008086684242483}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_LocalScale: {x: 0.7576415, y: 0.04862927, z: 0.043806203}
   m_Children: []
   m_Father: {fileID: 8933844318226655979}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1027020754678075354
 MeshFilter:
@@ -113,8 +113,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8933844318226655979}
-  - component: {fileID: 6059031542078045398}
-  m_Layer: 0
+  - component: {fileID: 5238600600958490}
+  m_Layer: 2
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,12 +132,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 2.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3133685362351573903}
   - {fileID: 509171114578999334}
+  - {fileID: 3133685362351573903}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6059031542078045398
+--- !u!114 &5238600600958490
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,9 +146,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2782036007025210155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 135ebdc0fca8c124b9eedd4ca13cc0fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b407172b786f85489e2ee15c234071e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vel: 25
 --- !u!1 &4237336138643174085
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +161,7 @@ GameObject:
   - component: {fileID: 3133685362351573903}
   - component: {fileID: 6943396700416095831}
   - component: {fileID: 7143670007795636060}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +180,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8933844318226655979}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &6943396700416095831
 MeshFilter:
