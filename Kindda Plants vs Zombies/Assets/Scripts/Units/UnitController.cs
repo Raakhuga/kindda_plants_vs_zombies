@@ -150,4 +150,8 @@ public class UnitController : MonoBehaviour
         }
     }
 
+    public void setCanMove(bool canMove)
+    {
+        this.canMove = canMove;
+    }
 }

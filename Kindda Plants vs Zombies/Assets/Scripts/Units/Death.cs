@@ -11,16 +11,6 @@ public class Death : MonoBehaviour
         r = GameObject.Find("GameController").GetComponent<Resources>();
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    if (sts.health <= 0)
-    //    {
-    //        r.resources += sts.gold;
-    //        Destroy(gameObject);
-    //    }
-    //}
-
     public void UnitDeath()
     {
         if (tag == "enemy")
@@ -31,7 +21,10 @@ public class Death : MonoBehaviour
         {
             GetComponent<UnitTile>().tile.GetComponent<TileParams>().activeUnit = false;
         }
-        Destroy(gameObject);
+        Destroy(transform.Find("HitBox").gameObject);
+        GetComponent<UnitController>().GetComponent<Animator>().SetBool("Death", true);
+        GetComponent<UnitController>().setCanMove(false);
+        Destroy(gameObject, 3.5f);
     }
 
 }

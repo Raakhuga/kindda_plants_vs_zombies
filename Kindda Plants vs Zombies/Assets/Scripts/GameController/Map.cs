@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-    public GameObject Tile1;
-    public GameObject Tile2;
-    public GameObject[] map;
+    public GameObject Tile1, Tile2;
+    public int nrows, ncols;
+    private GameObject[] map;
     // Start is called before the first frame update
     void Start()
     {
-        map = new GameObject[45];
-        for (int i = 0; i < 9; i++)
+        map = new GameObject[nrows*ncols];
+        for (int i = 0; i < nrows; i++)
         {
-            for (int j = 0; j < 5; j++)
+            for (int j = 0; j < ncols; j++)
             {
                 GameObject TyleType = Tile1;
                 if ((i + j) % 2 == 0) TyleType = Tile2;
