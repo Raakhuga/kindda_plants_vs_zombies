@@ -6,7 +6,7 @@ public class UnitController : MonoBehaviour
     private Stats sts;
     private Animator anim;
 
-    public bool movileUnit;
+    private bool movileUnit; // if Stats vel > 0 true
     private bool canMove;
 
     private float attackCooldown;
@@ -14,15 +14,14 @@ public class UnitController : MonoBehaviour
     private Ray vision;
     private Vector3 rayDirection;
     private string target;
-    private float edge;
 
-    // Only if shooter unit
-    public bool shooter;
+    // Only if ranger unit
+    public bool ranger;
     public GameObject projectile;
     private GameObject newProjectile;
     private Transform rightHand; // TODO: change to public gameobject (general)
 
-    // Only if non shooter unit
+    // Only if non ranger unit
     private GameObject attackTarget;
 
 
@@ -31,16 +30,9 @@ public class UnitController : MonoBehaviour
         sts = GetComponent<Stats>();
         anim = GetComponent<Animator>();
 
-        canMove = sts.vel > 0;
+        movileUnit = sts.vel > 0;
+        canMove = true;
         attackCooldown = sts.AttackSpeed;
-        if (movileUnit)
-        {
-            canMove = true;
-        }
-        else
-        {
-            canMove = false;
-        }
 
         rightHand = transform.Find("Hips/Spine/Spine1/Spine2/RightShoulder/RightArm/RightForeArm/RightHand").gameObject.transform;
 
@@ -55,14 +47,14 @@ public class UnitController : MonoBehaviour
 
     void Update()
     {
-        if (shooter)
+        if (ranger)
         {
             // See if there is a target at attack range.
             Vector3 rayOrigin = transform.position;
             rayOrigin.x -= 0.5F;
             rayOrigin.y = 1;
             vision = new Ray(rayOrigin, rayDirection);
-            Debug.DrawRay(vision.origin, vision.direction * sts.range, Color.magenta);
+            Debug.DrawRay(vision.origin, vision.direction * sts.range, Color.green);
 
             RaycastHit[] hits = Physics.RaycastAll(vision.origin, vision.direction, sts.range);
 
@@ -92,7 +84,7 @@ public class UnitController : MonoBehaviour
     // melee units
     public void meleeAttack(Collider col)
     {
-        if (!shooter)
+        if (!ranger)
         {
             attackTarget = col.gameObject.transform.parent.gameObject;
             StartCoroutine(startAttack());
@@ -117,11 +109,12 @@ public class UnitController : MonoBehaviour
     void ResetAttack()
     {
         anim.SetBool("Attack", false);
-        if (shooter)
+        if (ranger)
         {
             newProjectile = Instantiate(projectile, rightHand.position, rightHand.rotation);
             newProjectile.transform.parent = rightHand.gameObject.transform;
             newProjectile.GetComponent<Projectile>().setDmg(sts.dmg);
+            newProjectile.GetComponent<Projectile>().setTarget(target);
         }
         else // melee
         {
@@ -129,21 +122,28 @@ public class UnitController : MonoBehaviour
             {
                 attackTarget.GetComponent<Stats>().health -= sts.dmg;
             }
-            if (attackTarget == null || attackTarget.GetComponent<Stats>().health <= 0)
+            // Kill unit if health <= 0
+            if (attackTarget != null && attackTarget.GetComponent<Stats>().health <= 0)
+            {
+                attackTarget.GetComponent<Death>().UnitDeath();
+                attackTarget = null;
+            }
+            if (attackTarget == null)
             {
                 if (movileUnit)
                 {
                     canMove = true;
                     anim.SetBool("CanMove", true);
                 }
-                attackTarget = null;
+                
             }
         }
     }
 
+    // Only for rangers
     void Attack()
     {
-        if (shooter && newProjectile != null)
+        if (ranger && newProjectile != null)
         {
             newProjectile.GetComponent<Projectile>().releaseProjectile();
             newProjectile = null;

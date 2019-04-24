@@ -290,8 +290,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resources: 150
   startGenerating: 10
-  coolDown: 2
-  generator: 1
+  coolDown: 3
+  generator: 2
 --- !u!4 &310037033
 Transform:
   m_ObjectHideFlags: 0
@@ -347,6 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 888062534140793985, guid: 5b7180e3f3c39014eb92791c71d1e7a2, type: 3}
+  StartWave: 5
   CoolDown: 5
 --- !u!1001 &424620976
 PrefabInstance:

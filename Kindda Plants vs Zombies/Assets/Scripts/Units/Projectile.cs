@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
     public float vel;
+    private string target;
 
     void Update()
     {
@@ -23,5 +22,10 @@ public class Projectile : MonoBehaviour
     public void setDmg(float dmg)
     {
         transform.Find("HitBox").GetComponent<ProjectileHit>().setDmg(dmg);
+    }
+
+    public void setTarget(string target)
+    {
+        transform.Find("HitBox").GetComponent<ProjectileHit>().setTarget(target);
     }
 }

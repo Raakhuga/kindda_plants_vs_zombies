@@ -68,8 +68,6 @@ public class MousePointer : MonoBehaviour
                 Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.red);
             }
         }
-        //Debug.Log(currentTile == null ? "No tile selected."
-        //    : "Tile " + currentTile.gameObject.name + " selected");
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -80,13 +78,15 @@ public class MousePointer : MonoBehaviour
             && !currentTile.GetComponent<TileParams>().activeUnit)
         {
             buttonDown = false;
-            if (resources.resources >= Archer.GetComponent<Stats>().gold) {
+            if (resources.resources >= Archer.GetComponent<Stats>().gold)
+            {
+                currentTile.GetComponent<TileParams>().activeUnit = true;
                 resources.resources -= Archer.GetComponent<Stats>().gold;
                 Vector3 pos = currentTile.transform.position;
                 pos.y = 0.06f;
                 newArcher = Instantiate(Archer, pos, Archer.transform.rotation);
                 newArcher.tag = "ally";
-                currentTile.GetComponent<TileParams>().activeUnit = true;
+                newArcher.GetComponent<UnitTile>().tile = currentTile.gameObject;
             }
         }
     }
