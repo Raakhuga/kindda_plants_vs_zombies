@@ -52,7 +52,7 @@ public class UnitController : MonoBehaviour
             // See if there is a target at attack range.
             Vector3 rayOrigin = transform.position;
             rayOrigin.x -= 0.5F;
-            rayOrigin.y = 1;
+            rayOrigin.y = 1.5f;
             vision = new Ray(rayOrigin, rayDirection);
             Debug.DrawRay(vision.origin, vision.direction * sts.range, Color.green);
 
@@ -74,11 +74,18 @@ public class UnitController : MonoBehaviour
             }
         }
 
+        if (attackTarget == null && movileUnit)
+        {
+            canMove = true;
+            anim.SetBool("CanMove", true);
+        }
+
         if (movileUnit && canMove)
         {
             anim.SetBool("CanMove", true);
             transform.Translate(Vector3.forward * sts.vel * Time.deltaTime);
         }
+
     }
 
     // melee units
@@ -127,15 +134,6 @@ public class UnitController : MonoBehaviour
             {
                 attackTarget.GetComponent<Death>().UnitDeath();
                 attackTarget = null;
-            }
-            if (attackTarget == null)
-            {
-                if (movileUnit)
-                {
-                    canMove = true;
-                    anim.SetBool("CanMove", true);
-                }
-                
             }
         }
     }

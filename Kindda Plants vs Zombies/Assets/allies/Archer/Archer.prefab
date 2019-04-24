@@ -2832,7 +2832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
-  dmg: 25
+  dmg: 15
   AttackSpeed: 0.8
   vel: 0
   range: 9

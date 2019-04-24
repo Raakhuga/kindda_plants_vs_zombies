@@ -650,8 +650,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 888062534140793985, guid: 5b7180e3f3c39014eb92791c71d1e7a2, type: 3}
-  StartWave: 5
-  CoolDown: 5
+  numWaves: 5
+  enemiesWave: 10
+  timeStartWave: 5
+  waveCoolDown: 15
+  unitCoolDown: 10
 --- !u!1 &313195886
 GameObject:
   m_ObjectHideFlags: 0

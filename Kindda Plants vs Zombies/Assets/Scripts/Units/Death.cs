@@ -21,10 +21,13 @@ public class Death : MonoBehaviour
         {
             GetComponent<UnitTile>().tile.GetComponent<TileParams>().activeUnit = false;
         }
-        Destroy(transform.Find("HitBox").gameObject);
-        GetComponent<UnitController>().GetComponent<Animator>().SetBool("Death", true);
-        GetComponent<UnitController>().setCanMove(false);
-        Destroy(gameObject, 3.5f);
+        if (transform != null && transform.Find("HitBox") != null)
+        {
+            Destroy(transform.Find("HitBox").gameObject);
+            GetComponent<UnitController>().GetComponent<Animator>().SetBool("Death", true);
+            GetComponent<UnitController>().setCanMove(false);
+            Destroy(gameObject, 3.5f);
+        }
     }
 
 }
