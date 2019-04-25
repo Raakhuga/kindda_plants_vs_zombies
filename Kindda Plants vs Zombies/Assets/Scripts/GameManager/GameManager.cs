@@ -1,0 +1,38 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+    public static GameManager instance = null;
+    public BoardController board;
+    public ResourcesController resources;
+    public GameInteractionController gameInteraction;
+    public EnemyGen enemyGenerator;
+
+    void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+
+        board = GetComponent<BoardController>();
+        resources = GetComponent<ResourcesController>();
+        gameInteraction = GetComponent<GameInteractionController>();
+        enemyGenerator = GetComponent<EnemyGen>();
+        initGame();
+    }
+
+    void initGame()
+    {
+        board.initBoard();
+        gameInteraction.initGameInteraction();
+        enemyGenerator.initWaves();
+    }
+}

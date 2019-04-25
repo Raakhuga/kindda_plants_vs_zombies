@@ -3,12 +3,12 @@
 public class Death : MonoBehaviour
 {
     private Stats sts;
-    private Resources r;
+    private ResourcesController r;
     // Start is called before the first frame update
     void Start()
     {
         sts = GetComponent<Stats>();
-        r = GameObject.Find("GameController").GetComponent<Resources>();
+        r = GameManager.instance.resources;
     }
 
     public void UnitDeath()

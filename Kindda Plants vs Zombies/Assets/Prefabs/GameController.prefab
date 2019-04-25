@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8977382333198302346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8977382333198302340}
+  - component: {fileID: 8977382333198302336}
+  - component: {fileID: 8977382333198302341}
+  - component: {fileID: 8977382333198302342}
+  - component: {fileID: 8977382333198302343}
+  - component: {fileID: 8977382333198302337}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8977382333198302340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8977382333198302346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.9036617, y: -8.67168, z: 4.1604137}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8977382333198302336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8977382333198302346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a94c63917dca94e98a56c00419f004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boardController: {fileID: 0}
+--- !u!114 &8977382333198302341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8977382333198302346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca98ba7e88c6a8469dad3ce154264ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resources: 150
+  startGenerating: 10
+  coolDown: 3
+  generator: 2
+--- !u!114 &8977382333198302342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8977382333198302346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a78964b03b2e46e4bb622ba21bd07de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Archer: {fileID: 8958305400724712110, guid: 8b9efb018beb13b418672e9efae882c1, type: 3}
+--- !u!114 &8977382333198302343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8977382333198302346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64298e797ccb7004d8c5527471ab7a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  board: []
+  nrows: 9
+  ncols: 5
+  maxrows: 10
+  maxcols: 5
+  Tile1: {fileID: 2881746519353080722, guid: 6c8b7d91ecb9251438e953f06ed63217, type: 3}
+  Tile2: {fileID: 6765285728262090029, guid: 6cdc6900bd811d640b9f47ce5d91d51f, type: 3}
+--- !u!114 &8977382333198302337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8977382333198302346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd57538bd3c943499cd272eb16417b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 888062534140793985, guid: 5b7180e3f3c39014eb92791c71d1e7a2, type: 3}
+  numWaves: 5
+  enemiesWave: 10
+  timeStartWave: 5
+  waveCoolDown: 15
+  unitCoolDown: 10
