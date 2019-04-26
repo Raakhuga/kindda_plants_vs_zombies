@@ -3,5 +3,5 @@
 public class TileParams : MonoBehaviour
 {
     public int pi, pj, x, y; // pi, pj: pos in board matrix; x, y pos in scene.
-    public bool activeUnit = false;
+    public GameObject tileUnit = null;
 }

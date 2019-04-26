@@ -4,10 +4,14 @@ public class GameInteractionController : MonoBehaviour
 {
     private Shader stdShader, selectedShader, hoverShader;
     private GameObject currentTile;
-    private bool buttonDown;
 
+    public GameObject Priest;
     public GameObject Archer;
-    private GameObject newArcher;
+
+
+    private GameObject[] units = new GameObject[2];
+    private int selectedUnitIdx;
+    private GameObject newUnit;
 
     private int nrows, ncols;
     private ResourcesController resources;
@@ -20,38 +24,76 @@ public class GameInteractionController : MonoBehaviour
         hoverShader = Shader.Find("Custom/HoverObject");
 
         currentTile = null;
-        buttonDown = false;
 
         board = GameManager.instance.board;
         nrows = board.nrows;
         ncols = board.ncols;
 
         resources = GameManager.instance.resources;
+
+        units[0] = Priest;
+        units[0].name = "priest";
+        units[1] = Archer;
+        units[1].name = "archer";
+        selectedUnitIdx = 1;
     }
 
     public void Update()
     {
 
         hoverTiles();
+        keyboardInput();
+        mouseInput();
+    }
 
-        if (Input.GetMouseButtonDown(0))
+    private void keyboardInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1))
         {
-            buttonDown = true;
+            selectedUnitIdx = 0;
         }
-
-        if (currentTile != null && Input.GetMouseButtonUp(0) && buttonDown
-            && !currentTile.GetComponent<TileParams>().activeUnit)
+        else if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2))
         {
-            buttonDown = false;
-            if (resources.resources >= Archer.GetComponent<Stats>().gold)
+            selectedUnitIdx = 1;
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            selectedUnitIdx = (selectedUnitIdx + 1) % units.Length;
+        }
+    }
+
+    private void mouseInput()
+    {
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (currentTile != null)
             {
-                currentTile.GetComponent<TileParams>().activeUnit = true;
-                resources.resources -= Archer.GetComponent<Stats>().gold;
-                Vector3 pos = currentTile.transform.position;
-                pos.y = 0.06f;
-                newArcher = Instantiate(Archer, pos, Archer.transform.rotation);
-                newArcher.tag = "ally";
-                newArcher.GetComponent<UnitTile>().tile = currentTile;
+                if (currentTile.GetComponent<TileParams>().tileUnit == null)
+                {
+                    if (resources.resources >= units[selectedUnitIdx].GetComponent<Stats>().gold)
+                    {
+                        resources.resources -= units[selectedUnitIdx].GetComponent<Stats>().gold;
+                        Vector3 pos = currentTile.transform.position;
+                        pos.y = 0.06f;
+                        newUnit = Instantiate(units[selectedUnitIdx], pos, units[selectedUnitIdx].transform.rotation);
+                        newUnit.tag = "ally";
+                        newUnit.name = units[selectedUnitIdx].name;
+                        newUnit.GetComponent<UnitTile>().tile = currentTile;
+                        currentTile.GetComponent<TileParams>().tileUnit = newUnit;
+                    }
+                }
+                else
+                {
+                    GameObject unit = currentTile.GetComponent<TileParams>().tileUnit;
+                    if (unit.name == "priest")
+                    {
+                        if(unit.GetComponent<PriestController>().currentGold == unit.GetComponent<PriestController>().maxGold)
+                        {
+                            unit.GetComponent<PriestController>().takeGold();
+                        }
+                    }
+                }
             }
         }
     }

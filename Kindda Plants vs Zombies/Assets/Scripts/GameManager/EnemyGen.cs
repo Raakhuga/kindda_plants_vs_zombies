@@ -10,6 +10,9 @@ public class EnemyGen : MonoBehaviour
     public float waveCoolDown;
     public float unitCoolDown;
 
+    private int ncols;
+    private int startingCol;
+
     public void initWaves()
     {
         StartCoroutine(spawnEnemy());
@@ -19,18 +22,20 @@ public class EnemyGen : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(timeStartWave);
         int lastColVal = -1;
+        ncols = GameManager.instance.board.ncols;
+        startingCol = GameManager.instance.board.startingCol;
         for (int w = 0; w < numWaves; w++)
         {
             Debug.Log("Num Wave: " + w);
             for (int i = 0; i < enemiesWave; i++)
             {
-                int newCol = Random.Range(0, 5);
-                while (newCol == lastColVal)
+                int newCol = Random.Range(0, ncols) + startingCol;
+                while (ncols > 2 && newCol == lastColVal)
                 {
-                    newCol = Random.Range(0, 5);
+                    newCol = Random.Range(0, ncols) + startingCol;
                 }
                 lastColVal = newCol;
-                GameObject aux = Instantiate(enemy, new Vector3(Random.Range(12, 15), 0.06F, newCol), transform.rotation);
+                GameObject aux = Instantiate(enemy, new Vector3(Random.Range(13, 17), 0.06F, newCol), transform.rotation);
                 aux.transform.Rotate(0F, -90F, 0);
                 aux.GetComponent<Stats>().vel += Random.Range(-0.1f, 0.1f); // Little random enemy velocity
                 yield return new WaitForSecondsRealtime(unitCoolDown);
