@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MeleeHit : MonoBehaviour
 {
@@ -14,7 +12,10 @@ public class MeleeHit : MonoBehaviour
     {
         if (col.gameObject != null && col.gameObject.CompareTag(target))
         {
-            transform.parent.gameObject.GetComponent<UnitController>().meleeAttack(col);
+            if (transform.parent.gameObject.GetComponent<ZombieController>() != null)
+            {
+                transform.parent.gameObject.GetComponent<ZombieController>().meleeAttack(col);
+            }
         }
     }
 }
