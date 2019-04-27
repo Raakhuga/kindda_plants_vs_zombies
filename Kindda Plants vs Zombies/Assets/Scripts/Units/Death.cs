@@ -19,12 +19,15 @@ public class Death : MonoBehaviour
         if (transform != null && transform.Find("HitBox") != null)
         {
             Destroy(transform.Find("HitBox").gameObject);
-            Animator anim = GetComponent<Animator>();
-            if (paramInAnimator(anim, "canMove"))
+            if (GetComponent<Animator>() != null)
             {
-                anim.SetBool("canMove", false);
+                Animator anim = GetComponent<Animator>();
+                if (paramInAnimator(anim, "canMove"))
+                {
+                    anim.SetBool("canMove", false);
+                }
+                anim.SetBool("Death", true);
             }
-            anim.SetBool("Death", true);
             Destroy(gameObject, 3.5f);
         }
     }

@@ -81,6 +81,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Priest: {fileID: 634269550832235461, guid: d3e4c6b9017de6743890b41d1b42762a, type: 3}
   Archer: {fileID: 8958305400724712110, guid: 8b9efb018beb13b418672e9efae882c1, type: 3}
+  Barricade: {fileID: 7477902321612069491, guid: 319564f108d286a4c9aedf6377d252c0,
+    type: 3}
 --- !u!114 &8977382333198302343
 MonoBehaviour:
   m_ObjectHideFlags: 0

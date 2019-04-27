@@ -7,6 +7,7 @@ public class ZombieController : MonoBehaviour
     private Animator anim;
 
     private bool canMove;
+    private bool attacking;
 
     private float attackCooldown;
     private string target;
@@ -34,6 +35,10 @@ public class ZombieController : MonoBehaviour
         {
             canMove = true;
         }
+        else if (!attacking)
+        {
+            StartCoroutine(startAttack());
+        }
 
         if (canMove)
         {
@@ -47,6 +52,7 @@ public class ZombieController : MonoBehaviour
     {
         canMove = false;
         anim.SetBool("CanMove", false);
+        attacking = true;
         yield return new WaitForSecondsRealtime(attackCooldown);
         anim.SetBool("Attack", true);
     }
@@ -64,14 +70,7 @@ public class ZombieController : MonoBehaviour
                 attackTarget = null;
             }
         }
-    }
-
-    void OnTriggerStay(Collider col)
-    {
-        if (col.gameObject != null && col.gameObject.CompareTag(target))
-        {
-            meleeAttack(col);
-        }
+        attacking = false;
     }
 
     public void meleeAttack(Collider col)

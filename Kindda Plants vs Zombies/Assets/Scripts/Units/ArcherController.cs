@@ -40,9 +40,10 @@ public class ArcherController : MonoBehaviour
         rayOrigin.x -= 0.5F;
         rayOrigin.y = 1.5f;
         vision = new Ray(rayOrigin, rayDirection);
-        Debug.DrawRay(vision.origin, vision.direction * sts.range, Color.green);
+        float range = sts.range + 1; // x origin tirat mig tile enrere, volem que arrivi al final del ultim tile.
+        Debug.DrawRay(vision.origin, vision.direction * range, Color.green);
 
-        RaycastHit[] hits = Physics.RaycastAll(vision.origin, vision.direction, sts.range);
+        RaycastHit[] hits = Physics.RaycastAll(vision.origin, vision.direction, range);
 
         foreach (RaycastHit hit in hits)
         {

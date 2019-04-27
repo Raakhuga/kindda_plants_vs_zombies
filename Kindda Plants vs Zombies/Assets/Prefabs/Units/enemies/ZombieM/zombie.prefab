@@ -191,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 150
   dmg: 25
-  AttackSpeed: 1
+  AttackSpeed: 1.5
   vel: 0.4
   range: 1
   gold: 3

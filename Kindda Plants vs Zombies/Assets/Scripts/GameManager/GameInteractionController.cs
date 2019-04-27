@@ -7,9 +7,10 @@ public class GameInteractionController : MonoBehaviour
 
     public GameObject Priest;
     public GameObject Archer;
+    public GameObject Barricade;
 
 
-    private GameObject[] units = new GameObject[2];
+    private GameObject[] units = new GameObject[3];
     private int selectedUnitIdx;
     private GameObject newUnit;
 
@@ -35,6 +36,8 @@ public class GameInteractionController : MonoBehaviour
         units[0].name = "priest";
         units[1] = Archer;
         units[1].name = "archer";
+        units[2] = Barricade;
+        units[2].name = "barricade";
         selectedUnitIdx = 1;
     }
 
@@ -55,6 +58,10 @@ public class GameInteractionController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2))
         {
             selectedUnitIdx = 1;
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            selectedUnitIdx = 2;
         }
         else if (Input.GetKeyDown(KeyCode.Keypad1))
         {
