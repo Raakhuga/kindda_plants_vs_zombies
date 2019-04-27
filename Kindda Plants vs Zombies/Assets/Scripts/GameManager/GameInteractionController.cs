@@ -9,7 +9,7 @@ public class GameInteractionController : MonoBehaviour
     public GameObject Archer;
     public GameObject Barricade;
 
-
+    private Transform allies;
     private GameObject[] units = new GameObject[3];
     private int selectedUnitIdx;
     private GameObject newUnit;
@@ -32,6 +32,7 @@ public class GameInteractionController : MonoBehaviour
 
         resources = GameManager.instance.resources;
 
+        allies = new GameObject("allies").transform;
         units[0] = Priest;
         units[0].name = "priest";
         units[1] = Archer;
@@ -83,7 +84,7 @@ public class GameInteractionController : MonoBehaviour
                         resources.resources -= units[selectedUnitIdx].GetComponent<Stats>().gold;
                         Vector3 pos = currentTile.transform.position;
                         pos.y = 0.06f;
-                        newUnit = Instantiate(units[selectedUnitIdx], pos, units[selectedUnitIdx].transform.rotation);
+                        newUnit = Instantiate(units[selectedUnitIdx], pos, units[selectedUnitIdx].transform.rotation, allies) as GameObject;
                         newUnit.tag = "ally";
                         newUnit.name = units[selectedUnitIdx].name;
                         newUnit.GetComponent<UnitTile>().tile = currentTile;
@@ -95,7 +96,7 @@ public class GameInteractionController : MonoBehaviour
                     GameObject unit = currentTile.GetComponent<TileParams>().tileUnit;
                     if (unit.name == "priest")
                     {
-                        if(unit.GetComponent<PriestController>().currentGold == unit.GetComponent<PriestController>().maxGold)
+                        if (unit.GetComponent<PriestController>().currentGold == unit.GetComponent<PriestController>().maxGold)
                         {
                             unit.GetComponent<PriestController>().takeGold();
                         }

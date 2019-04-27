@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resources: 150
-  startGenerating: 10
+  startGenerating: 3
   coolDown: 3
   addGold: 3
 --- !u!114 &8977382333198302342
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board: []
   nrows: 10
-  ncols: 3
+  ncols: 5
   maxrows: 10
   maxcols: 5
   startingCol: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 888062534140793985, guid: 5b7180e3f3c39014eb92791c71d1e7a2, type: 3}
   numWaves: 5
-  enemiesWave: 10
+  enemiesWave: 5
   timeStartWave: 5
-  waveCoolDown: 15
+  waveCoolDown: 10
   unitCoolDown: 3

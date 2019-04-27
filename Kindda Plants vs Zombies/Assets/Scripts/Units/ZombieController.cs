@@ -10,7 +10,7 @@ public class ZombieController : MonoBehaviour
     private bool attacking;
 
     private float attackCooldown;
-    private string target;
+    private string target; // Used in MeleeHit.cs
     private GameObject attackTarget;
 
 
@@ -31,6 +31,10 @@ public class ZombieController : MonoBehaviour
 
     void Update()
     {
+        if (transform.position.x < -15)
+        {
+            Destroy(transform.gameObject);
+        }
         if (attackTarget == null)
         {
             canMove = true;
