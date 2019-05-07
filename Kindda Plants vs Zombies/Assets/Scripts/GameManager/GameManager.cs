@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     public BoardController board;
     public ResourcesController resources;
+    public DurabilityController durability;
     public GameInteractionController gameInteraction;
     public EnemyGen enemyGenerator;
 
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
 
         board = GetComponent<BoardController>();
         resources = GetComponent<ResourcesController>();
+        durability = GetComponent<DurabilityController>();
         gameInteraction = GetComponent<GameInteractionController>();
         enemyGenerator = GetComponent<EnemyGen>();
         initGame();

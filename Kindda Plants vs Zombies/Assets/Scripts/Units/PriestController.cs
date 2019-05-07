@@ -42,7 +42,7 @@ public class PriestController : MonoBehaviour
     IEnumerator generateGold()
     {
         generating = true;
-        yield return new WaitForSecondsRealtime(coolDown);
+        yield return new WaitForSeconds(coolDown);
         currentGold += addGold;
         currentGold = currentGold < maxGold ? currentGold : maxGold;
         generating = false;

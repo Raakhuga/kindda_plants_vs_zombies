@@ -13,6 +13,7 @@ public class GameInteractionController : MonoBehaviour
     private GameObject[] units = new GameObject[3];
     private int selectedUnitIdx;
     private GameObject newUnit;
+    public string selectedUnitName;
 
     private int nrows, ncols;
     private ResourcesController resources;
@@ -31,7 +32,6 @@ public class GameInteractionController : MonoBehaviour
         ncols = board.ncols;
 
         resources = GameManager.instance.resources;
-
         allies = new GameObject("allies").transform;
         units[0] = Priest;
         units[0].name = "priest";
@@ -40,6 +40,7 @@ public class GameInteractionController : MonoBehaviour
         units[2] = Barricade;
         units[2].name = "barricade";
         selectedUnitIdx = 1;
+        selectedUnitName = units[selectedUnitIdx].name;
     }
 
     public void Update()
@@ -48,6 +49,13 @@ public class GameInteractionController : MonoBehaviour
         hoverTiles();
         keyboardInput();
         mouseInput();
+
+        selectedUnitName = units[selectedUnitIdx].name;
+    }
+
+    public void selectUnit(int unitId)
+    {
+        selectedUnitIdx = (unitId - 1) % units.Length;
     }
 
     private void keyboardInput()

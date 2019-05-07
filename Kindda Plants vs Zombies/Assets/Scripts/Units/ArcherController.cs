@@ -59,7 +59,7 @@ public class ArcherController : MonoBehaviour
     IEnumerator startAttack()
     {
         attacking = true;
-        yield return new WaitForSecondsRealtime(attackCooldown);
+        yield return new WaitForSeconds(attackCooldown);
         anim.SetBool("Attack", true);
     }
 

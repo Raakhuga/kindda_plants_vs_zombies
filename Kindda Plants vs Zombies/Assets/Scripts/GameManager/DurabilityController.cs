@@ -1,13 +1,15 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourcesController : MonoBehaviour
+public class DurabilityController : MonoBehaviour
 {
-    public float resources;
+    public float durability = 100;
+    public float maxDurability = 100;
 
     public float startGenerating = 10;
     public float coolDown = 5;
-    public float addGold = 3;
+    public float restoreHealth = 3;
 
     void Start()
     {
@@ -19,7 +21,8 @@ public class ResourcesController : MonoBehaviour
         yield return new WaitForSeconds(startGenerating);
         while (true)
         {
-            resources += addGold;
+            durability += restoreHealth;
+            durability = durability < maxDurability ? durability : maxDurability;
             yield return new WaitForSeconds(coolDown);
         }
     }
