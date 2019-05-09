@@ -17,7 +17,7 @@ public class HealthBar : MonoBehaviour
         sts = GetComponent<Stats>();
         InitialHealth = sts.health;
         mainCamera = Camera.main;
-        Vector3 pos = new Vector3(transform.position.x, 2.5f, transform.position.z);
+        Vector3 pos = new Vector3(transform.position.x, 1.6f, transform.position.z);
 		newHBar = Instantiate(HBar, pos, transform.rotation);
 		newHBar.transform.parent = transform;
 		Vector3 camPos = new Vector3(transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z);
