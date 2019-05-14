@@ -209,6 +209,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 8977382333198302346, guid: c0f1366756a050c4fa47e48d51f9a589,
     type: 3}
+--- !u!1 &539063316 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2670205302138820031, guid: b6462e76628442541b88e42626927d32,
+    type: 3}
+  m_PrefabInstance: {fileID: 1254062913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!154 &539063318
+TerrainCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539063316}
+  m_Material: {fileID: 0}
+  m_Enabled: 1
+  m_TerrainData: {fileID: 0}
+  m_EnableTreeColliders: 1
+--- !u!64 &539063319
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539063316}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 0}
 --- !u!1001 &1254062913
 PrefabInstance:
   m_ObjectHideFlags: 0

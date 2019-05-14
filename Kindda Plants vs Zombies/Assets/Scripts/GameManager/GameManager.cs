@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public ResourcesController resources;
     public GameInteractionController gameInteraction;
     public EnemyGen enemyGenerator;
+    public GoldGen goldGenerator;
 
     void Awake()
     {
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
         resources = GetComponent<ResourcesController>();
         gameInteraction = GetComponent<GameInteractionController>();
         enemyGenerator = GetComponent<EnemyGen>();
+        goldGenerator = GetComponent<GoldGen>();
         initGame();
     }
 
@@ -34,5 +36,6 @@ public class GameManager : MonoBehaviour
         board.initBoard();
         gameInteraction.initGameInteraction();
         enemyGenerator.initWaves();
+        goldGenerator.initGold();
     }
 }
