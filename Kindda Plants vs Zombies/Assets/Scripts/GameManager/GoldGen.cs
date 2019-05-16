@@ -24,9 +24,9 @@ public class GoldGen : MonoBehaviour
     	float x = Random.Range(0, nrows);
     	float z = Random.Range(0, ncols) + startingCol;
     	GameObject MB = Instantiate(MoneyBag, new Vector3(x, 10, z), transform.rotation);
-    	Rigidbody aux = MB.AddComponent<Rigidbody>();
-    	MB.AddComponent<BoxCollider>();
-    	aux.mass = 5;
+    	//MB.transform.Rotate(-90, 0, 0);
+    	MB.transform.localScale += new Vector3(1.5f, 1.5f, 1.5f);
+    	MB.AddComponent<MoneyBagController>();
     	yield return new WaitForSecondsRealtime(CoolDown);
     }
 }
