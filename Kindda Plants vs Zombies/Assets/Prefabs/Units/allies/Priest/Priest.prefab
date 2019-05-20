@@ -167,10 +167,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43d0b42bc8fdb2a4081d7bde82ae869a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDown: 5
+  coolDown: 1
   currentGold: 0
   addGold: 5
   maxGold: 25
+  MoneyBag: {fileID: 100000, guid: 42bc2317443b32a42b345a7c95921d33, type: 3}
 --- !u!114 &7308318134223085219
 MonoBehaviour:
   m_ObjectHideFlags: 0
