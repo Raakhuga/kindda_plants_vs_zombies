@@ -68,6 +68,8 @@ public class ZombieController : MonoBehaviour
         if (attackTarget != null)
         {
             attackTarget.GetComponent<Stats>().health -= sts.dmg;
+            //HealthBar = attackTarget.GetComponent<HealthBar>()
+            attackTarget.GetComponent<HealthBar>().actHBar();
             // Kill unit if health <= 0
             if (attackTarget.GetComponent<Stats>().health <= 0)
             {

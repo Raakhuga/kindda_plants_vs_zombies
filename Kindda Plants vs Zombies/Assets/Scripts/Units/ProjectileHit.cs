@@ -12,6 +12,7 @@ public class ProjectileHit : MonoBehaviour
         {
             GameObject target = col.gameObject.transform.parent.gameObject;
             target.GetComponent<Stats>().health -= dmg;
+            target.GetComponent<HealthBar>().actHBar();
 
             // Kill unit if health <= 0
             if (target.GetComponent<Stats>().health <= 0)
@@ -19,7 +20,7 @@ public class ProjectileHit : MonoBehaviour
                 target.GetComponent<Death>().UnitDeath();
             }
 
-            Destroy(transform.parent.gameObject);
+            //Destroy(transform.parent.gameObject);
         }
     }
 
