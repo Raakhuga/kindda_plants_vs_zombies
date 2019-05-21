@@ -24,13 +24,13 @@ public class PriestController : MonoBehaviour
         ratio = (int)(maxGold / addGold);
         ratio = ratio < 2 ? 2 : ratio;
 
-        Vector3 pos = new Vector3(transform.position.x, 2f, transform.position.z);
-        Vector3 camPos = new Vector3(transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
+        Vector3 pos = new Vector3(transform.position.x, 1.75f, transform.position.z);
+        //Vector3 camPos = new Vector3(transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
         MB = Instantiate(MoneyBag, pos, transform.rotation);
         MB.transform.parent = transform;
-        MB.transform.LookAt(camPos);
-        MB.transform.Rotate(-90, 0, 0);
-        MB.transform.localScale += new Vector3(1.5f, 1.5f, 1.5f);
+        //MB.transform.LookAt(camPos);
+        //MB.transform.Rotate(-90, 0, 0);
+        MB.transform.localScale *=0.75f;
         MB.SetActive(false);
     }
 

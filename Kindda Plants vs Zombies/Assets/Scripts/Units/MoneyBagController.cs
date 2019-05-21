@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class MoneyBagController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public int gold = 25;
     void Update()
     {
-        if (transform.position.y > 0.06F) transform.Translate(new Vector3(0, -1, 0) * 4 * Time.deltaTime);
+        if (transform.position.y > 0.35F) transform.Translate(new Vector3(0, -1, 0) * 4 * Time.deltaTime);
     }
 }
