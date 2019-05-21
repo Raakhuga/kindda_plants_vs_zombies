@@ -16,6 +16,10 @@ public class MeleeHit : MonoBehaviour
             {
                 transform.parent.gameObject.GetComponent<ZombieController>().meleeAttack(col);
             }
+            else if (transform.parent.gameObject.GetComponent<PaladinController>() != null)
+            {
+                transform.parent.gameObject.GetComponent<PaladinController>().meleeAttack(col);
+            }
         }
     }
 }

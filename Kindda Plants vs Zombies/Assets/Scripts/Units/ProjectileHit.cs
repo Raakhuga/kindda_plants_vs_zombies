@@ -20,7 +20,7 @@ public class ProjectileHit : MonoBehaviour
                 target.GetComponent<Death>().UnitDeath();
             }
 
-            //Destroy(transform.parent.gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 

@@ -24,7 +24,7 @@ public class EnemyGen : MonoBehaviour
 
     IEnumerator spawnEnemy()
     {
-        yield return new WaitForSecondsRealtime(timeStartWave);
+        yield return new WaitForSeconds(timeStartWave);
         int lastColVal = -1;
         ncols = GameManager.instance.board.ncols;
         startingCol = GameManager.instance.board.startingCol;
@@ -33,7 +33,7 @@ public class EnemyGen : MonoBehaviour
             Debug.Log("Num Wave: " + w + " " + Time.time);
             for (int i = 0; i < enemiesWave; i++)
             {
-                yield return new WaitForSecondsRealtime(unitCoolDown);
+                yield return new WaitForSeconds(unitCoolDown);
                 Debug.Log("New enemy unit: " + i + " " + Time.time);
                 int newCol = Random.Range(0, ncols) + startingCol;
                 while (ncols > 2 && newCol == lastColVal)
@@ -48,7 +48,7 @@ public class EnemyGen : MonoBehaviour
             unitCoolDown -= 3;
             unitCoolDown = unitCoolDown > 2 ? unitCoolDown : 2;
             enemiesWave = (int)(enemiesWave * 2f);
-            yield return new WaitForSecondsRealtime(waveCoolDown);
+            yield return new WaitForSeconds(waveCoolDown);
         }
     }
 }

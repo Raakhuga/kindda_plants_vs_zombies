@@ -16,11 +16,11 @@ public class ResourcesController : MonoBehaviour
 
     IEnumerator addResources()
     {
-        yield return new WaitForSecondsRealtime(startGenerating);
+        yield return new WaitForSeconds(startGenerating);
         while (true)
         {
             resources += addGold;
-            yield return new WaitForSecondsRealtime(coolDown);
+            yield return new WaitForSeconds(coolDown);
         }
     }
 }

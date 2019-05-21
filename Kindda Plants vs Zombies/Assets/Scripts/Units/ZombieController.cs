@@ -31,8 +31,9 @@ public class ZombieController : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.x < -15)
+        if (transform.position.x < -5)
         {
+            GameManager.instance.durability.durability -= 10;
             Destroy(transform.gameObject);
         }
         if (attackTarget == null)
@@ -57,7 +58,7 @@ public class ZombieController : MonoBehaviour
         canMove = false;
         anim.SetBool("CanMove", false);
         attacking = true;
-        yield return new WaitForSecondsRealtime(attackCooldown);
+        yield return new WaitForSeconds(attackCooldown);
         anim.SetBool("Attack", true);
     }
 

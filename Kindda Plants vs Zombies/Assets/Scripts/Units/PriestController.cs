@@ -7,7 +7,9 @@ public class PriestController : MonoBehaviour
     public float currentGold = 0;
     public float addGold = 5;
     public float maxGold = 25;
+    public GameObject MoneyBag;
 
+    private GameObject MB;
     private int ratio;
     private Stats sts;
     private Animator anim;
@@ -21,6 +23,15 @@ public class PriestController : MonoBehaviour
 
         ratio = (int)(maxGold / addGold);
         ratio = ratio < 2 ? 2 : ratio;
+
+        Vector3 pos = new Vector3(transform.position.x, 2f, transform.position.z);
+        Vector3 camPos = new Vector3(transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
+        MB = Instantiate(MoneyBag, pos, transform.rotation);
+        MB.transform.parent = transform;
+        MB.transform.LookAt(camPos);
+        MB.transform.Rotate(-90, 0, 0);
+        MB.transform.localScale += new Vector3(1.5f, 1.5f, 1.5f);
+        MB.SetActive(false);
     }
 
     void Update()
@@ -36,13 +47,15 @@ public class PriestController : MonoBehaviour
         else
         {
             anim.SetBool("FullGold", true);
+            if(!MB.activeSelf) MB.SetActive(true);
+
         }
     }
 
     IEnumerator generateGold()
     {
         generating = true;
-        yield return new WaitForSecondsRealtime(coolDown);
+        yield return new WaitForSeconds(coolDown);
         currentGold += addGold;
         currentGold = currentGold < maxGold ? currentGold : maxGold;
         generating = false;
@@ -54,5 +67,6 @@ public class PriestController : MonoBehaviour
         currentGold = 0;
         addGold += 1;
         maxGold = addGold * ratio;
+        MB.SetActive(false);
     }
 }
