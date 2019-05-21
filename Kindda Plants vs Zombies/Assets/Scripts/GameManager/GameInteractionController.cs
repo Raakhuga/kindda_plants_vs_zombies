@@ -18,6 +18,7 @@ public class GameInteractionController : MonoBehaviour
     private int nrows, ncols;
     private ResourcesController resources;
     private BoardController board;
+    private GoldGen goldGen;
 
     public void initGameInteraction()
     {
@@ -41,6 +42,8 @@ public class GameInteractionController : MonoBehaviour
         units[2].name = "barricade";
         selectedUnitIdx = 1;
         selectedUnitName = units[selectedUnitIdx].name;
+
+        goldGen = GameManager.instance.goldGenerator;
     }
 
     public void Update()
@@ -85,9 +88,12 @@ public class GameInteractionController : MonoBehaviour
         {
             if (currentTile != null)
             {
-                if (currentTile.GetComponent<TileParams>().tileUnit == null)
+                GameObject unit = currentTile.GetComponent<TileParams>().tileUnit;
+                GameObject goldBag = currentTile.GetComponent<TileParams>().tileGoldBag;
+
+                if (unit == null)
                 {
-                    if (resources.resources >= units[selectedUnitIdx].GetComponent<Stats>().gold)
+                    if (resources.resources >= units[selectedUnitIdx].GetComponent<Stats>().gold && goldBag == null)
                     {
                         resources.resources -= units[selectedUnitIdx].GetComponent<Stats>().gold;
                         Vector3 pos = currentTile.transform.position;
@@ -100,15 +106,21 @@ public class GameInteractionController : MonoBehaviour
                     }
                 }
                 else
-                {
-                    GameObject unit = currentTile.GetComponent<TileParams>().tileUnit;
-                    if (unit.name == "priest")
+                {                    
+                    if (unit != null && unit.name == "priest")
                     {
                         if (unit.GetComponent<PriestController>().currentGold == unit.GetComponent<PriestController>().maxGold)
                         {
                             unit.GetComponent<PriestController>().takeGold();
                         }
-                    }
+                    }                    
+                }
+
+                if (goldBag != null)
+                {
+                    resources.resources += goldBag.GetComponent<MoneyBagController>().gold;
+                    Destroy(goldBag);
+                    goldGen.numBags -= 1;
                 }
             }
         }
