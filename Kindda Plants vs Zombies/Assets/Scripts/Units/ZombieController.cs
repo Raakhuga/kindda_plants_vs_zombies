@@ -22,11 +22,7 @@ public class ZombieController : MonoBehaviour
         canMove = true;
         attackCooldown = sts.AttackSpeed;
 
-        target = "enemy";
-        if (tag == "enemy")
-        {
-            target = "ally";
-        }
+        target = "ally";
     }
 
     void Update()
