@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class SelectedUnitRawImage : MonoBehaviour
 {
     RawImage m_RawImage;
-    
+
     public Texture[] tex = new Texture[5];
 
     private void Awake()
@@ -26,6 +24,9 @@ public class SelectedUnitRawImage : MonoBehaviour
 
     void Update()
     {
-        m_RawImage.texture = tex[GameManager.instance.gameInteraction.selectedUnitIdx];
+        if (GameManager.instance.gameInteraction.enabled)
+        {
+            m_RawImage.texture = tex[GameManager.instance.gameInteraction.selectedUnitIdx];
+        }
     }
 }

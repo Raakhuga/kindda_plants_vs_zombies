@@ -11,10 +11,11 @@ public class GameManager : MonoBehaviour
     public GameInteractionController gameInteraction;
     public EnemyGen enemyGenerator;
     public GoldGen goldGenerator;
+    public bool pause;
 
     void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -31,6 +32,10 @@ public class GameManager : MonoBehaviour
         enemyGenerator = GetComponent<EnemyGen>();
         goldGenerator = GetComponent<GoldGen>();
         initGame();
+
+        Time.timeScale = 0;
+        pause = true;
+        gameInteraction.enabled = false;
     }
 
     void initGame()
