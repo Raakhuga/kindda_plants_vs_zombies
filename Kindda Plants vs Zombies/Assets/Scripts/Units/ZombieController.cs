@@ -27,9 +27,9 @@ public class ZombieController : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.x < -5)
+        if (transform.position.x < 0)
         {
-            GameManager.instance.durability.durability -= 10;
+            // TODO: afegir final joc!
             Destroy(transform.gameObject);
         }
         if (attackTarget == null)

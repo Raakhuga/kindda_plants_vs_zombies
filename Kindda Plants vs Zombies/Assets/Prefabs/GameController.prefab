@@ -48,12 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a94c63917dca94e98a56c00419f004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  board: {fileID: 0}
-  resources: {fileID: 0}
-  durability: {fileID: 0}
-  gameInteraction: {fileID: 0}
-  enemyGenerator: {fileID: 0}
-  goldGenerator: {fileID: 0}
+  board: {fileID: 8977382333198302343}
+  resources: {fileID: 8977382333198302341}
+  gameInteraction: {fileID: 8977382333198302342}
+  enemyGenerator: {fileID: 8977382333198302337}
+  goldGenerator: {fileID: 8162216435271978396}
+  pause: 0
 --- !u!114 &8977382333198302341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +87,7 @@ MonoBehaviour:
   Paladin: {fileID: 8439400429018640162, guid: 243ccd31047248a4784359d0a931ef98, type: 3}
   Barricade: {fileID: 7477902321612069491, guid: 319564f108d286a4c9aedf6377d252c0,
     type: 3}
+  selectedUnitIdx: 0
   selectedUnitName: 
 --- !u!114 &8977382333198302343
 MonoBehaviour:
@@ -140,6 +141,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoneyBag: {fileID: 4595172445145805687, guid: 6539442f7b580cb489d574043acd8753,
     type: 3}
-  CoolDown: 1
+  CoolDown: 3
   numBags: 0
   maxBags: 0

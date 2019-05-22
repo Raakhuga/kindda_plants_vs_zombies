@@ -30,6 +30,11 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
     }
 
+    public void Restart()
+    {
+        GameManager.instance.restart();
+    }
+
     public void Quit()
     {
 #if UNITY_EDITOR

@@ -13,6 +13,8 @@ public class GoldGen : MonoBehaviour
     private int nrows;
     private int ncols;
 
+    private bool generatingBag;
+
     private GameObject tile;
 
     public void initGold()
@@ -22,21 +24,28 @@ public class GoldGen : MonoBehaviour
 
         maxBags = nrows * ncols / 2;
         maxBags = maxBags < 1 ? 1 : maxBags;
+    }
 
-        StartCoroutine(genGold());
+    public void Update()
+    {
+        if (!generatingBag)
+        {
+            generatingBag = true;
+            StartCoroutine(genGold());
+        }
     }
 
     private IEnumerator genGold()
     {
-        while (true)
+        if (numBags < maxBags)
         {
-            if (numBags < maxBags)
-            {
-                int startingCol = GameManager.instance.board.startingCol;
-                int x = (int)Random.Range(0, nrows);
-                int z = (int)(Random.Range(0, ncols) + startingCol);
+            int startingCol = GameManager.instance.board.startingCol;
+            int x = (int)Random.Range(0, nrows);
+            int z = (int)(Random.Range(0, ncols) + startingCol);
 
-                tile = GameManager.instance.board.board[x * ncols + z];
+            tile = GameManager.instance.board.board[x * ncols + z];
+            if (tile)
+            {
 
                 while (tile.GetComponent<TileParams>().tileGoldBag != null)
                 {
@@ -53,7 +62,8 @@ public class GoldGen : MonoBehaviour
 
                 numBags += 1;
             }
-            yield return new WaitForSecondsRealtime(CoolDown);
         }
+        yield return new WaitForSecondsRealtime(CoolDown);
+        generatingBag = false;
     }
 }
