@@ -12,7 +12,7 @@ public class GameInteractionController : MonoBehaviour
 
     private Transform allies;
     private GameObject[] units = new GameObject[4];
-    private int selectedUnitIdx;
+    public int selectedUnitIdx;
     private GameObject newUnit;
     public string selectedUnitName;
 
