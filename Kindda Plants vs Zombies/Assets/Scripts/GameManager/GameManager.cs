@@ -31,7 +31,8 @@ public class GameManager : MonoBehaviour
         enemyGenerator = GetComponent<EnemyGen>();
         goldGenerator = GetComponent<GoldGen>();
 
-        sceneIdx = 0;
+        //sceneIdx = 0;
+        sceneIdx = 1;
     }
 
     public void pauseGame()
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void restart()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level");
     }
 
     void initGame()
@@ -73,8 +74,10 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         StopAllCoroutines();
-
-        initGame();
-        pauseGame();
+        if (sceneIdx != 0)
+        {
+            initGame();
+            pauseGame();
+        }
     }
 }
