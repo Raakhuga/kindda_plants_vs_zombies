@@ -22,6 +22,32 @@ public class GameInteractionController : MonoBehaviour
     private BoardController board;
     private GoldGen goldGen;
 
+    private void initLevelParams()
+    {
+        // TODO: mirar com activar/desactivar unitats (i els botons)
+        switch (GameManager.instance.currentLvl)
+        {
+            case 1:
+                Debug.Log("GameInteraction Lvl 1");
+                break;
+            case 2:
+                Debug.Log("GameInteraction Lvl 2");
+                break;
+            case 3:
+                Debug.Log("GameInteraction Lvl 3");
+                break;
+            case 4:
+                Debug.Log("GameInteraction Lvl 4");
+                break;
+            case 5:
+                Debug.Log("GameInteraction Lvl 5");
+                break;
+            default:
+                Debug.Log("GameInteraction default");
+                break;
+        }
+    }
+
     public void initGameInteraction()
     {
         stdShader = Resources.Load("stdShader", typeof(Shader)) as Shader;

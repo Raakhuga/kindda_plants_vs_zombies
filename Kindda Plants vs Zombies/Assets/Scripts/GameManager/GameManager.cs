@@ -52,7 +52,8 @@ public class GameManager : MonoBehaviour
         gameInteraction.initGameInteraction();
         enemyGenerator.initWaves();
         goldGenerator.initGold();
-        pause = false;
+        pause = true;
+        pauseGame();
     }
 
     private void OnEnable()
@@ -70,15 +71,15 @@ public class GameManager : MonoBehaviour
         StopAllCoroutines();
         goldGenerator.stopCoroutines();
         enemyGenerator.stopCoroutines();
-        pause = false;
         if (scene.name == "MenuStartGame")
         {
+            pause = false;
+            pauseGame();
             Time.timeScale = 1;
         }
         else
         {
             initGame();
-            pauseGame();
         }
     }
 }

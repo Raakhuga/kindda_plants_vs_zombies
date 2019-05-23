@@ -54,7 +54,7 @@ MonoBehaviour:
   enemyGenerator: {fileID: 8977382333198302337}
   goldGenerator: {fileID: 8162216435271978396}
   pause: 0
-  sceneIdx: 0
+  currentLvl: 0
 --- !u!114 &8977382333198302341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +88,7 @@ MonoBehaviour:
   Paladin: {fileID: 378, guid: 243ccd31047248a4784359d0a931ef98, type: 3}
   Barricade: {fileID: 7477902321612069491, guid: 319564f108d286a4c9aedf6377d252c0,
     type: 3}
+  Barrel: {fileID: 1964431040936758, guid: ae95d385019def448981b67e58f4dcc2, type: 3}
   selectedUnitIdx: 0
   selectedUnitName: 
 --- !u!114 &8977382333198302343

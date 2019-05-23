@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class GoldGen : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject MoneyBag;
-    public float CoolDown = 3;
+    public float CoolDown = 10;
 
     public int numBags;
-    public int maxBags;
+    private int maxBags;
 
     private int nrows;
     private int ncols;
