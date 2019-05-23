@@ -23,6 +23,11 @@ public class EnemyGen : MonoBehaviour
         StartCoroutine(spawnEnemy());
     }
 
+    public void stopCoroutines()
+    {
+        StopAllCoroutines();
+    }
+
     IEnumerator spawnEnemy()
     {
         yield return new WaitForSeconds(timeStartWave);

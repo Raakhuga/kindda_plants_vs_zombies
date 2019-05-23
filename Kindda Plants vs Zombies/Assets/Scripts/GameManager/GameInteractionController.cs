@@ -9,9 +9,10 @@ public class GameInteractionController : MonoBehaviour
     public GameObject Archer;
     public GameObject Paladin;
     public GameObject Barricade;
+    public GameObject Barrel;
 
     private Transform allies;
-    private GameObject[] units = new GameObject[4];
+    private GameObject[] units = new GameObject[5];
     public int selectedUnitIdx;
     private GameObject newUnit;
     public string selectedUnitName;
@@ -23,9 +24,9 @@ public class GameInteractionController : MonoBehaviour
 
     public void initGameInteraction()
     {
-        stdShader = Shader.Find("Standard");
-        selectedShader = Shader.Find("Custom/SelectedObject");
-        hoverShader = Shader.Find("Custom/HoverObject");
+        stdShader = Resources.Load("stdShader", typeof(Shader)) as Shader;
+        selectedShader = Resources.Load("SelectedObject", typeof(Shader)) as Shader;
+        hoverShader = Resources.Load("HoverObject", typeof(Shader)) as Shader;
 
         currentTile = null;
 
@@ -35,6 +36,7 @@ public class GameInteractionController : MonoBehaviour
 
         resources = GameManager.instance.resources;
         allies = new GameObject("allies").transform;
+        units = new GameObject[5];
         units[0] = Priest;
         units[0].name = "priest";
         units[1] = Archer;
@@ -43,6 +45,8 @@ public class GameInteractionController : MonoBehaviour
         units[2].name = "paladin";
         units[3] = Barricade;
         units[3].name = "barricade";
+        units[4] = Barrel;
+        units[4].name = "barrel";
         selectedUnitIdx = 1;
         selectedUnitName = units[selectedUnitIdx].name;
 
@@ -51,7 +55,6 @@ public class GameInteractionController : MonoBehaviour
 
     public void Update()
     {
-
         hoverTiles();
         keyboardInput();
         mouseInput();
@@ -82,9 +85,17 @@ public class GameInteractionController : MonoBehaviour
         {
             selectedUnitIdx = 3;
         }
-        else if (Input.GetKeyDown(KeyCode.Keypad1))
+        else if (Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            selectedUnitIdx = 4;
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             selectedUnitIdx = (selectedUnitIdx + 1) % units.Length;
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            selectedUnitIdx = (selectedUnitIdx - 1) % units.Length;
         }
     }
 
@@ -113,14 +124,14 @@ public class GameInteractionController : MonoBehaviour
                     }
                 }
                 else
-                {                    
+                {
                     if (unit != null && unit.name == "priest")
                     {
                         if (unit.GetComponent<PriestController>().currentGold == unit.GetComponent<PriestController>().maxGold)
                         {
                             unit.GetComponent<PriestController>().takeGold();
                         }
-                    }                    
+                    }
                 }
 
                 if (goldBag != null)

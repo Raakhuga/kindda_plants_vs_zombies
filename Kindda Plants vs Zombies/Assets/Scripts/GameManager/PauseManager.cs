@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEngine.SceneManagement;
+using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -13,7 +14,6 @@ public class PauseManager : MonoBehaviour
         canvas.enabled = GameManager.instance.pause;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -30,7 +30,12 @@ public class PauseManager : MonoBehaviour
 
     public void Restart()
     {
-        GameManager.instance.restart();
+        SceneManager.LoadScene("Level");
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("MenuStartGame");
     }
 
     public void Quit()

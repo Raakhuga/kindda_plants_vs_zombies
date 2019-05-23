@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public GoldGen goldGenerator;
     public bool pause = false;
 
-    public int sceneIdx = 0;
+    public int currentLvl;
 
     void Awake()
     {
@@ -31,8 +31,7 @@ public class GameManager : MonoBehaviour
         enemyGenerator = GetComponent<EnemyGen>();
         goldGenerator = GetComponent<GoldGen>();
 
-        //sceneIdx = 0;
-        sceneIdx = 1;
+        currentLvl = 0;
     }
 
     public void pauseGame()
@@ -44,11 +43,6 @@ public class GameManager : MonoBehaviour
         goldGenerator.enabled = pause;
         pause = !pause;
         Time.timeScale = pause ? 0 : 1;
-    }
-
-    public void restart()
-    {
-        SceneManager.LoadScene("Level");
     }
 
     void initGame()
@@ -74,7 +68,14 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         StopAllCoroutines();
-        if (sceneIdx != 0)
+        goldGenerator.stopCoroutines();
+        enemyGenerator.stopCoroutines();
+        pause = false;
+        if (scene.name == "MenuStartGame")
+        {
+            Time.timeScale = 1;
+        }
+        else
         {
             initGame();
             pauseGame();

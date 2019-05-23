@@ -16,8 +16,47 @@ public class BoardController : MonoBehaviour
 
     private Transform boardHolder;
 
+    private void initLevelParams()
+    {
+        switch (GameManager.instance.currentLvl)
+        {
+            case 1:
+                Debug.Log("Board Lvl 1");
+                nrows = 5;
+                ncols = 3;
+                break;
+            case 2:
+                Debug.Log("Board Lvl 2");
+                nrows = 7;
+                ncols = 3;
+                break;
+            case 3:
+                Debug.Log("Board Lvl 3");
+                nrows = 7;
+                ncols = 5;
+                break;
+            case 4:
+                Debug.Log("Board Lvl 4");
+                nrows = 9;
+                ncols = 5;
+                break;
+            case 5:
+                Debug.Log("Board Lvl 5");
+                nrows = 10;
+                ncols = 5;
+                break;
+            default:
+                Debug.Log("Board default");
+                nrows = 10;
+                ncols = 5;
+                break;
+        }
+    }
+
     public void initBoard()
     {
+        initLevelParams();
+
         boardHolder = new GameObject("board").transform;
 
         nrows = nrows < maxrows ? nrows : maxrows;

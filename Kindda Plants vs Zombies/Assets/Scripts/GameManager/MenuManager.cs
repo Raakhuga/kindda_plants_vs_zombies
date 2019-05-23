@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -11,6 +12,12 @@ public class MenuManager : MonoBehaviour
         {
             Quit();
         }
+    }
+
+    public void StartLevel(int levelIdx)
+    {
+        GameManager.instance.currentLvl = levelIdx;
+        SceneManager.LoadScene("Level");
     }
 
     public void Quit()

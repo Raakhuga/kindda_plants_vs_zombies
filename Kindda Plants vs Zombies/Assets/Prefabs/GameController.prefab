@@ -54,6 +54,7 @@ MonoBehaviour:
   enemyGenerator: {fileID: 8977382333198302337}
   goldGenerator: {fileID: 8162216435271978396}
   pause: 0
+  sceneIdx: 0
 --- !u!114 &8977382333198302341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,9 +83,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a78964b03b2e46e4bb622ba21bd07de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Priest: {fileID: 634269550832235461, guid: d3e4c6b9017de6743890b41d1b42762a, type: 3}
-  Archer: {fileID: 8958305400724712110, guid: 8b9efb018beb13b418672e9efae882c1, type: 3}
-  Paladin: {fileID: 8439400429018640162, guid: 243ccd31047248a4784359d0a931ef98, type: 3}
+  Priest: {fileID: 196, guid: d3e4c6b9017de6743890b41d1b42762a, type: 3}
+  Archer: {fileID: 488, guid: 8b9efb018beb13b418672e9efae882c1, type: 3}
+  Paladin: {fileID: 378, guid: 243ccd31047248a4784359d0a931ef98, type: 3}
   Barricade: {fileID: 7477902321612069491, guid: 319564f108d286a4c9aedf6377d252c0,
     type: 3}
   selectedUnitIdx: 0

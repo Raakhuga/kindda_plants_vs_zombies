@@ -26,7 +26,13 @@ public class GoldGen : MonoBehaviour
         maxBags = nrows * ncols / 2;
         maxBags = maxBags < 1 ? 1 : maxBags;
 
+        numBags = 0;
         generatingBag = false;
+    }
+
+    public void stopCoroutines()
+    {
+        StopAllCoroutines();
     }
 
     public void Update()
@@ -44,20 +50,19 @@ public class GoldGen : MonoBehaviour
         {
             int startingCol = GameManager.instance.board.startingCol;
             int x = Random.Range(0, nrows);
-            int z = Random.Range(0, ncols) + startingCol;
+            int z = Random.Range(0, ncols);
 
             tile = GameManager.instance.board.board[x * ncols + z];
             if (tile)
             {
                 while (tile.GetComponent<TileParams>().tileGoldBag != null)
                 {
-                    x = (int)Random.Range(0, nrows);
-                    z = (int)(Random.Range(0, ncols) + startingCol);
+                    x = Random.Range(0, nrows);
+                    z = Random.Range(0, ncols);
                     tile = GameManager.instance.board.board[x * ncols + z];
                 }
 
-                GameObject MB = Instantiate(MoneyBag, new Vector3(x, 10, z), transform.rotation);
-                //MB.transform.Rotate(-90, 0, 0);
+                GameObject MB = Instantiate(MoneyBag, new Vector3(x, 10, z + startingCol), transform.rotation);
                 MB.transform.localScale += new Vector3(1.5f, 1.5f, 1.5f);
                 MB.AddComponent<MoneyBagController>();
                 tile.GetComponent<TileParams>().tileGoldBag = MB;
