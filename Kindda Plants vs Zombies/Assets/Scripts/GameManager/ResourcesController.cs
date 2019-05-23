@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ResourcesController : MonoBehaviour
 {
@@ -8,18 +7,8 @@ public class ResourcesController : MonoBehaviour
     public float coolDown = 5;
     public float addGold = 3;
 
-    void Start()
+    public void initResources()
     {
-        StartCoroutine(addResources());
-    }
 
-    IEnumerator addResources()
-    {
-        yield return new WaitForSeconds(startGenerating);
-        while (true)
-        {
-            resources += addGold;
-            yield return new WaitForSeconds(coolDown);
-        }
     }
 }

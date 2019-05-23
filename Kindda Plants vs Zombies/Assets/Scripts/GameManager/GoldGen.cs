@@ -19,11 +19,14 @@ public class GoldGen : MonoBehaviour
 
     public void initGold()
     {
+        StopAllCoroutines();
         nrows = GameManager.instance.board.nrows;
         ncols = GameManager.instance.board.ncols;
 
         maxBags = nrows * ncols / 2;
         maxBags = maxBags < 1 ? 1 : maxBags;
+
+        generatingBag = false;
     }
 
     public void Update()
@@ -40,13 +43,12 @@ public class GoldGen : MonoBehaviour
         if (numBags < maxBags)
         {
             int startingCol = GameManager.instance.board.startingCol;
-            int x = (int)Random.Range(0, nrows);
-            int z = (int)(Random.Range(0, ncols) + startingCol);
+            int x = Random.Range(0, nrows);
+            int z = Random.Range(0, ncols) + startingCol;
 
             tile = GameManager.instance.board.board[x * ncols + z];
             if (tile)
             {
-
                 while (tile.GetComponent<TileParams>().tileGoldBag != null)
                 {
                     x = (int)Random.Range(0, nrows);

@@ -17,6 +17,7 @@ public class EnemyGen : MonoBehaviour
 
     public void initWaves()
     {
+        StopAllCoroutines();
         enemies = new GameObject("enemies").transform;
 
         StartCoroutine(spawnEnemy());

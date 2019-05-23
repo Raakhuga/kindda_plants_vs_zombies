@@ -24,10 +24,8 @@ public class PauseManager : MonoBehaviour
 
     public void Pause()
     {
-        canvas.enabled = !canvas.enabled;
-        GameManager.instance.pause = canvas.enabled;
-        GameManager.instance.gameInteraction.enabled = !canvas.enabled;
-        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+        GameManager.instance.pauseGame();
+        canvas.enabled = GameManager.instance.pause;
     }
 
     public void Restart()

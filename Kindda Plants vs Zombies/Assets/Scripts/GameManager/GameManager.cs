@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
     public GameInteractionController gameInteraction;
     public EnemyGen enemyGenerator;
     public GoldGen goldGenerator;
-    public bool pause;
+    public bool pause = false;
+
+    public int sceneIdx = 0;
 
     void Awake()
     {
@@ -28,48 +30,39 @@ public class GameManager : MonoBehaviour
         gameInteraction = GetComponent<GameInteractionController>();
         enemyGenerator = GetComponent<EnemyGen>();
         goldGenerator = GetComponent<GoldGen>();
-        initGame();
 
-        Time.timeScale = 0;
-        pause = true;
-        pauseGame();
+        sceneIdx = 0;
     }
 
-    private void pauseGame()
+    public void pauseGame()
     {
-        board.enabled = !pause;
-        resources.enabled = !pause;
-        gameInteraction.enabled = !pause;
-        enemyGenerator.enabled = !pause;
-        goldGenerator.enabled = !pause;
+        board.enabled = pause;
+        resources.enabled = pause;
+        gameInteraction.enabled = pause;
+        enemyGenerator.enabled = pause;
+        goldGenerator.enabled = pause;
+        pause = !pause;
+        Time.timeScale = pause ? 0 : 1;
     }
 
     public void restart()
     {
         SceneManager.LoadScene("Level1");
-        initGame();
-
-        Time.timeScale = 0;
-        pause = true;
-        pauseGame();
-    }
-
-    public void Update()
-    {
-        pauseGame();
     }
 
     void initGame()
     {
         board.initBoard();
+        resources.initResources();
         gameInteraction.initGameInteraction();
         enemyGenerator.initWaves();
         goldGenerator.initGold();
+        pause = false;
     }
 
     private void OnEnable()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;        
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
@@ -79,6 +72,9 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        StopAllCoroutines();
+
         initGame();
+        pauseGame();
     }
 }
