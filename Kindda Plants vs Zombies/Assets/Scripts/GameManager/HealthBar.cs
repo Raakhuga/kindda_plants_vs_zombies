@@ -46,10 +46,10 @@ public class HealthBar : MonoBehaviour
     	}
     	for(float elapsed = 0; elapsed < speed; elapsed += Time.deltaTime) {
     		HBfill.fillAmount = Mathf.Lerp(initPct, pct, elapsed / speed);
-    		Debug.Log(elapsed);
+    		//Debug.Log(elapsed);
     		yield return null;
     	}
-    	if (tag == "enemy") Debug.Log("hooo");
+    	//if (tag == "enemy") Debug.Log("hooo");
     	HBfill.fillAmount = pct;
     }
 }

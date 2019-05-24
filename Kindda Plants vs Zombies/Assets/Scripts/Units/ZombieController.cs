@@ -30,7 +30,10 @@ public class ZombieController : MonoBehaviour
         if (transform.position.x < 0)
         {
             // TODO: afegir final joc!
-            Destroy(transform.gameObject);
+            //Destroy(transform.gameObject);
+            StartCoroutine(startAttack());
+            GameManager.instance.GameLost();
+            return;
         }
         if (attackTarget == null)
         {

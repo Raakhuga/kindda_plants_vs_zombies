@@ -5,6 +5,7 @@ public class MoneyBagController : MonoBehaviour
     public int gold = 25;
 
     private float yMin = 0;
+
     void Update()
     {
         if (transform.position.y > yMin)

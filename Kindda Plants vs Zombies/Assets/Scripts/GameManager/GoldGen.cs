@@ -15,6 +15,7 @@ public class GoldGen : MonoBehaviour
     private bool generatingBag;
 
     private GameObject tile;
+    private Shader goldShader;
 
     public void initGold()
     {
@@ -27,6 +28,8 @@ public class GoldGen : MonoBehaviour
 
         numBags = 0;
         generatingBag = false;
+
+        goldShader = Resources.Load("GoldTileShader", typeof(Shader)) as Shader;
     }
 
     public void stopCoroutines()
@@ -36,7 +39,7 @@ public class GoldGen : MonoBehaviour
 
     public void Update()
     {
-        if (!generatingBag)
+        if (!generatingBag && GameManager.instance.currentLvl < 4)
         {
             generatingBag = true;
             StartCoroutine(genGold());
@@ -61,15 +64,16 @@ public class GoldGen : MonoBehaviour
                     tile = GameManager.instance.board.board[x * ncols + z];
                 }
 
-                GameObject MB = Instantiate(MoneyBag, new Vector3(x, 10, z + startingCol), transform.rotation);
+                GameObject MB = Instantiate(MoneyBag, new Vector3(x, 5, z + startingCol), transform.rotation);
                 MB.transform.localScale += new Vector3(1.5f, 1.5f, 1.5f);
                 MB.AddComponent<MoneyBagController>();
                 tile.GetComponent<TileParams>().tileGoldBag = MB;
+                tile.GetComponent<Renderer>().material.shader = goldShader;
 
                 numBags += 1;
             }
         }
-        yield return new WaitForSecondsRealtime(CoolDown);
+        yield return new WaitForSeconds(CoolDown);
         generatingBag = false;
     }
 }

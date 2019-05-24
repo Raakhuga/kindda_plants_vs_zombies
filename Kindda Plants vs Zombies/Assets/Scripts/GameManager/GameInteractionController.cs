@@ -2,7 +2,7 @@
 
 public class GameInteractionController : MonoBehaviour
 {
-    private Shader stdShader, selectedShader, hoverShader;
+    private Shader stdShader, selectedShader, hoverShader, goldShader;
     private GameObject currentTile;
 
     public GameObject Priest;
@@ -53,6 +53,7 @@ public class GameInteractionController : MonoBehaviour
         stdShader = Resources.Load("stdShader", typeof(Shader)) as Shader;
         selectedShader = Resources.Load("SelectedObject", typeof(Shader)) as Shader;
         hoverShader = Resources.Load("HoverObject", typeof(Shader)) as Shader;
+        goldShader = Resources.Load("GoldTileShader", typeof(Shader)) as Shader;
 
         currentTile = null;
 
@@ -188,6 +189,38 @@ public class GameInteractionController : MonoBehaviour
         }
     }
 
+    private void setTileShadersOut(GameObject initTile, Shader sh, Shader gsh)
+    {
+        int pi = initTile.GetComponent<TileParams>().pi;
+        int pj = initTile.GetComponent<TileParams>().pj;
+
+        for (int i = 0; i < nrows; i++)
+        {
+            Renderer tile = board.board[i * ncols + pj].GetComponent<Renderer>();
+            if (tile.GetComponent<TileParams>().tileGoldBag == null)
+            {
+                tile.material.shader = sh;
+            }
+            else
+            {
+                tile.material.shader = gsh;
+            }
+        }
+
+        for (int j = 0; j < ncols; j++)
+        {
+            Renderer tile = board.board[pi * ncols + j].GetComponent<Renderer>();
+            if (tile.GetComponent<TileParams>().tileGoldBag == null)
+            {
+                tile.material.shader = sh;
+            }
+            else
+            {
+                tile.material.shader = gsh;
+            }
+        }
+    }
+
     // Changes shader of Tiles on hover.
     void hoverTiles()
     {
@@ -199,7 +232,7 @@ public class GameInteractionController : MonoBehaviour
         // reset currentTile (if we hit nothing, clean last tile selected)
         if (currentTile != null)
         {
-            setTileShaders(currentTile, stdShader);
+            setTileShadersOut(currentTile.gameObject, stdShader, goldShader);
             currentTile = null;
         }
         // Search if we hit a tile
@@ -210,7 +243,8 @@ public class GameInteractionController : MonoBehaviour
                 GameObject hitObj = hit.transform.gameObject;
                 if (currentTile != null)
                 {
-                    setTileShaders(currentTile.gameObject, stdShader);
+                    setTileShadersOut(currentTile.gameObject, stdShader, goldShader);
+
                 }
                 currentTile = hitObj;
                 setTileShaders(currentTile.gameObject, hoverShader);

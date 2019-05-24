@@ -8,4 +8,12 @@ public class SceneCanvas : MonoBehaviour
     {
         GameManager.instance.gameInteraction.selectUnit(unitId);
     }
+
+    public void Update()
+    {
+        if(GameManager.instance.lostGame)
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }

@@ -38,6 +38,13 @@ public class PauseManager : MonoBehaviour
         SceneManager.LoadScene("MenuStartGame");
     }
 
+    public void Skip()
+    {
+        GameManager.instance.currentLvl = (GameManager.instance.currentLvl + 1) % 7;
+        Debug.Log("Skip to Lvl " + GameManager.instance.currentLvl);
+        SceneManager.LoadScene("Level");
+    }
+
     public void Quit()
     {
 #if UNITY_EDITOR
