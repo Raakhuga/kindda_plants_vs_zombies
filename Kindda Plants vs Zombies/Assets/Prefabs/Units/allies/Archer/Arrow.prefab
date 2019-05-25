@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1027020754678075354}
   - component: {fileID: 2116292973532315963}
   - component: {fileID: 9020542251276587971}
-  - component: {fileID: 6298008086684242483}
+  - component: {fileID: 4129979499020001506}
   m_Layer: 2
   m_Name: HitBox
   m_TagString: Untagged
@@ -92,7 +92,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6298008086684242483
+--- !u!114 &4129979499020001506
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

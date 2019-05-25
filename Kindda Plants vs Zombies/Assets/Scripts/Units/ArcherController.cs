@@ -86,9 +86,9 @@ public class ArcherController : MonoBehaviour
 
     void Attack()
     {
+        Source.Play();
         if (newProjectile != null)
         {
-            Source.Play();
             newProjectile.GetComponent<Projectile>().releaseProjectile();
             newProjectile = null;
         }
