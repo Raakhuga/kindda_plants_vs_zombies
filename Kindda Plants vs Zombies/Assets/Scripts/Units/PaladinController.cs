@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PaladinController : MonoBehaviour
 {
-	private float cooldownAttack;
+    public AudioClip Hit;
+    public AudioClip Death;
+    public AudioSource Source;
+	
+    private float cooldownAttack;
 	private Animator anim;
 	private Stats sts;
 	private GameObject attackTarget;
@@ -17,6 +21,7 @@ public class PaladinController : MonoBehaviour
         sts = GetComponent<Stats>();
         cooldownAttack = sts.AttackSpeed;
         attacking = false;
+        Source.clip = Hit;
     }
 
     // Update is called once per frame
@@ -26,6 +31,7 @@ public class PaladinController : MonoBehaviour
     }
 
     public void resetAttack() {
+        Source.Play();
     	anim.SetBool("Attack", false);
     	if (attackTarget != null)
         {
@@ -56,4 +62,10 @@ public class PaladinController : MonoBehaviour
             StartCoroutine(startAttack());
         }
     }
+
+    public void  deathSound() 
+    {
+        Source.clip = Death;
+        Source.Play();
+    } 
 }

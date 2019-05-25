@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class ZombieController : MonoBehaviour
 {
+    public AudioClip Hit;
+    public AudioClip Death;
+    public AudioSource Source;
+
     private Stats sts;
     private Animator anim;
 
@@ -23,6 +27,8 @@ public class ZombieController : MonoBehaviour
         attackCooldown = sts.AttackSpeed;
 
         target = "ally";
+
+        Source.clip = Hit;
     }
 
     void Update()
@@ -63,6 +69,7 @@ public class ZombieController : MonoBehaviour
 
     void ResetAttack()
     {
+        Source.Play();
         anim.SetBool("Attack", false);
         if (attackTarget != null)
         {
@@ -86,5 +93,16 @@ public class ZombieController : MonoBehaviour
             attackTarget = col.gameObject.transform.parent.gameObject;
             StartCoroutine(startAttack());
         }
+    }
+
+    public void deathSound() 
+    {
+        Source.clip = Death;
+        Source.Play();
+    }
+
+    void playHit() 
+    {
+        Source.Play();
     }
 }

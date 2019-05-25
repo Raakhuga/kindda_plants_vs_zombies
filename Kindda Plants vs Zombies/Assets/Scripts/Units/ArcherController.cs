@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class ArcherController : MonoBehaviour
 {
+    public AudioClip Hit;
+    public AudioClip Death;
+    public AudioSource Source;
+
     private Stats sts;
     private Animator anim;
 
@@ -21,6 +25,7 @@ public class ArcherController : MonoBehaviour
 
     void Start()
     {
+        Source.clip = Hit;
         sts = GetComponent<Stats>();
         anim = GetComponent<Animator>();
 
@@ -83,8 +88,15 @@ public class ArcherController : MonoBehaviour
     {
         if (newProjectile != null)
         {
+            Source.Play();
             newProjectile.GetComponent<Projectile>().releaseProjectile();
             newProjectile = null;
         }
+    }
+
+    void deathSound() 
+    {
+        Source.clip = Death;
+        Source.Play();
     }
 }

@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class PriestController : MonoBehaviour
 {
+    public AudioClip Death;
+    public AudioSource Source;
+
     public float coolDown = 2;
     public float currentGold = 0;
     public float addGold = 5;
@@ -17,6 +20,7 @@ public class PriestController : MonoBehaviour
 
     void Start()
     {
+        Source.clip = Death;
         sts = GetComponent<Stats>();
         anim = GetComponent<Animator>();
         anim.SetBool("FullGold", false);
@@ -68,5 +72,10 @@ public class PriestController : MonoBehaviour
         addGold += 1;
         maxGold = addGold * ratio;
         MB.SetActive(false);
+    }
+
+    public void deathSound() 
+    {
+        Source.Play();
     }
 }
