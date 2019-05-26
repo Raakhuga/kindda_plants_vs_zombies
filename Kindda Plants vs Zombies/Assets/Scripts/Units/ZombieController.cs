@@ -26,6 +26,13 @@ public class ZombieController : MonoBehaviour
         canMove = true;
         attackCooldown = sts.AttackSpeed;
 
+        if (transform.Find("Root/Spine1/Spine2/Chest/Neck1/Neck2/Neck3/Neck4/Head/UpperHead1/Flames") != null)
+        {
+            GameObject Flames = transform.Find("Root/Spine1/Spine2/Chest/Neck1/Neck2/Neck3/Neck4/Head/UpperHead1/Flames").gameObject;
+            Renderer render = Flames.GetComponent<Renderer>();
+            render.enabled = false;
+        } 
+
         target = "ally";
 
         Source.clip = Hit;
@@ -99,6 +106,13 @@ public class ZombieController : MonoBehaviour
     {
         Source.clip = Death;
         Source.Play();
+        
+        if (transform.Find("Root/Spine1/Spine2/Chest/Neck1/Neck2/Neck3/Neck4/Head/UpperHead1/Flames") != null)
+        {
+            GameObject Flames = transform.Find("Root/Spine1/Spine2/Chest/Neck1/Neck2/Neck3/Neck4/Head/UpperHead1/Flames").gameObject;
+            Renderer render = Flames.GetComponent<Renderer>();
+            render.enabled = false;
+        }
     }
 
     void playHit() 
@@ -108,11 +122,12 @@ public class ZombieController : MonoBehaviour
 
     void toggleFire()
     {
-        GameObject Flames = transform.Find("Root/Spine1/Spine2/Chest/Neck1/Neck2/Neck3/Neck4/Head/UpperHead1/Flames").gameObject;
-        if (Flames != null)
+        if (transform.Find("Root/Spine1/Spine2/Chest/Neck1/Neck2/Neck3/Neck4/Head/UpperHead1/Flames") != null)
         {
-            Flames.SetActive(!Flames.activeSelf);
-            if (Flames.activeSelf) ResetAttack();
+            GameObject Flames = transform.Find("Root/Spine1/Spine2/Chest/Neck1/Neck2/Neck3/Neck4/Head/UpperHead1/Flames").gameObject;
+            Renderer render = Flames.GetComponent<Renderer>();
+            render.enabled = !render.enabled;
+            //if (render.enabled) ResetAttack();
         }
     }
 }

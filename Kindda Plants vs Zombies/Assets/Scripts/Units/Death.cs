@@ -28,6 +28,7 @@ public class Death : MonoBehaviour
                 }
                 anim.SetBool("Death", true);
             }
+            
             Destroy(gameObject, 3.5f);
         }
     }

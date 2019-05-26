@@ -184,6 +184,7 @@ MonoBehaviour:
   pause: 0
   lostGame: 0
   currentLvl: 0
+  nameLvl: 
   music: {fileID: 1318298718247185270}
 --- !u!114 &8977382333198302341
 MonoBehaviour:
@@ -266,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a8c11c5398bb1941b3c090ab4d66bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoneyBag: {fileID: 4595172445145805687, guid: 6539442f7b580cb489d574043acd8753,
+  MoneyBag: {fileID: 4595172445145805687, guid: 2c8906332ebd43247bc7565fc2119bf4,
     type: 3}
   CoolDown: 10
   numBags: 0

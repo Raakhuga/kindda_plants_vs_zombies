@@ -1381,7 +1381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e956382a207a86488c6f510475e3917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hit: {fileID: 8300000, guid: 0df7da8ac08df8540857c8cec1eda347, type: 3}
+  Hit: {fileID: 8300000, guid: abd59b6bddebcb948b45dfe233a7c03b, type: 3}
   Death: {fileID: 8300000, guid: 09cd01728e5e52f4593d2c0fce2e0ddc, type: 3}
   Source: {fileID: 5115490328235618869}
 --- !u!114 &2478655472131208979
