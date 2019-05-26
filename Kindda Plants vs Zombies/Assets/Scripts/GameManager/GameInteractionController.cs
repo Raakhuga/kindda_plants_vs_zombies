@@ -164,7 +164,7 @@ public class GameInteractionController : MonoBehaviour
                 if (goldBag != null)
                 {
                     resources.resources += goldBag.GetComponent<MoneyBagController>().gold;
-                    Destroy(goldBag);
+                    goldBag.GetComponent<MoneyBagSpinner>().DestroyBag();
                     goldGen.numBags -= 1;
                 }
             }

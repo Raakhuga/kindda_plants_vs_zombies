@@ -174,7 +174,7 @@ MonoBehaviour:
   currentGold: 0
   addGold: 5
   maxGold: 25
-  MoneyBag: {fileID: 4595172445145805687, guid: 6539442f7b580cb489d574043acd8753,
+  MoneyBag: {fileID: 4595172445145805687, guid: 2c8906332ebd43247bc7565fc2119bf4,
     type: 3}
 --- !u!114 &916
 MonoBehaviour:

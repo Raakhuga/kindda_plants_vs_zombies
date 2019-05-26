@@ -67,6 +67,7 @@ public class GoldGen : MonoBehaviour
                 GameObject MB = Instantiate(MoneyBag, new Vector3(x, 5, z + startingCol), transform.rotation);
                 MB.transform.localScale += new Vector3(1.5f, 1.5f, 1.5f);
                 MB.AddComponent<MoneyBagController>();
+                MB.GetComponent<MoneyBagSpinner>().SetTile(tile);
                 tile.GetComponent<TileParams>().tileGoldBag = MB;
                 tile.GetComponent<Renderer>().material.shader = goldShader;
 

@@ -16,6 +16,7 @@ public class PriestController : MonoBehaviour
     private Stats sts;
     private Animator anim;
     private bool generating = false;
+    private Renderer render;
 
     void Start()
     {
@@ -27,11 +28,12 @@ public class PriestController : MonoBehaviour
         Vector3 pos = new Vector3(transform.position.x, 1.75f, transform.position.z);
         //Vector3 camPos = new Vector3(transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
         MB = Instantiate(MoneyBag, pos, transform.rotation);
+        render = MB.transform.Find("money_bag").GetComponent<Renderer>();
         MB.transform.parent = transform;
         //MB.transform.LookAt(camPos);
         //MB.transform.Rotate(-90, 0, 0);
         MB.transform.localScale *=0.75f;
-        MB.SetActive(false);
+        render.enabled = false;
     }
 
     void Update()
@@ -47,7 +49,7 @@ public class PriestController : MonoBehaviour
         else
         {
             anim.SetBool("FullGold", true);
-            if(!MB.activeSelf) MB.SetActive(true);
+            if(!render.enabled) render.enabled = true;
 
         }
     }
@@ -65,6 +67,8 @@ public class PriestController : MonoBehaviour
     {
         GameManager.instance.resources.resources += currentGold;
         currentGold = 0;
+        addGold += 1;
+        maxGold = addGold * ratio;
         MB.SetActive(false);
     }
 
@@ -73,3 +77,7 @@ public class PriestController : MonoBehaviour
         Source.Play();
     }
 }
+
+        addGold += 1;
+        maxGold = addGold * ratio;
+        MB.GetComponent<MoneyBagSpinner>().SetDeactive();
