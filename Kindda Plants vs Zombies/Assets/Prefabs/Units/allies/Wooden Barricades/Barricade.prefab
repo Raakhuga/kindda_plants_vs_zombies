@@ -125,7 +125,7 @@ MonoBehaviour:
   AttackSpeed: 0
   vel: 0
   range: 0
-  gold: 0
+  gold: 50
 --- !u!114 &906
 MonoBehaviour:
   m_ObjectHideFlags: 0
