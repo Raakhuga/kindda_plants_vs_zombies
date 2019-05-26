@@ -105,4 +105,14 @@ public class ZombieController : MonoBehaviour
     {
         Source.Play();
     }
+
+    void toggleFire()
+    {
+        GameObject Flames = transform.Find("Root/Spine1/Spine2/Chest/Neck1/Neck2/Neck3/Neck4/Head/UpperHead1/Flames").gameObject;
+        if (Flames != null)
+        {
+            Flames.SetActive(!Flames.activeSelf);
+            if (Flames.activeSelf) ResetAttack();
+        }
+    }
 }
