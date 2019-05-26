@@ -35,15 +35,18 @@ public class HealthBar : MonoBehaviour
         float pct = sts.health / InitialHealth;
         float initPct = HBfill.fillAmount;
         float speed = 0.2f;
-        if (!newHBar.activeSelf)
+        if (newHBar != null)
         {
-            newHBar.SetActive(true);
-        }
-        for (float elapsed = 0; elapsed < speed; elapsed += Time.deltaTime)
-        {
-            HBfill.fillAmount = Mathf.Lerp(initPct, pct, elapsed / speed);
-            //Debug.Log(elapsed);
-            yield return null;
+            if (!newHBar.activeSelf)
+            {
+                newHBar.SetActive(true);
+            }
+            for (float elapsed = 0; elapsed < speed; elapsed += Time.deltaTime)
+            {
+                HBfill.fillAmount = Mathf.Lerp(initPct, pct, elapsed / speed);
+                //Debug.Log(elapsed);
+                yield return null;
+            }
         }
         //if (tag == "enemy") Debug.Log("hooo");
         HBfill.fillAmount = pct;

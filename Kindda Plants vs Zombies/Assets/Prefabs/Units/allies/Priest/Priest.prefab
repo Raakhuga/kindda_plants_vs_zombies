@@ -170,9 +170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Death: {fileID: 8300000, guid: 8de60a56db89df64993a633050942fd2, type: 3}
   Source: {fileID: 3840455218403330613}
-  coolDown: 1
+  coolDown: 10
   currentGold: 0
-  addGold: 5
   maxGold: 25
   MoneyBag: {fileID: 4595172445145805687, guid: 2c8906332ebd43247bc7565fc2119bf4,
     type: 3}

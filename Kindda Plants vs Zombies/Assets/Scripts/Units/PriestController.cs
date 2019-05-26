@@ -6,9 +6,8 @@ public class PriestController : MonoBehaviour
     public AudioClip Death;
     public AudioSource Source;
 
-    public float coolDown = 2;
+    public float coolDown = 10;
     public float currentGold = 0;
-    public float addGold = 5;
     public float maxGold = 25;
     public GameObject MoneyBag;
 
@@ -32,7 +31,7 @@ public class PriestController : MonoBehaviour
         MB.transform.parent = transform;
         //MB.transform.LookAt(camPos);
         //MB.transform.Rotate(-90, 0, 0);
-        MB.transform.localScale *=0.75f;
+        MB.transform.localScale *= 0.75f;
         render.enabled = false;
     }
 
@@ -49,7 +48,7 @@ public class PriestController : MonoBehaviour
         else
         {
             anim.SetBool("FullGold", true);
-            if(!render.enabled) render.enabled = true;
+            if (!render.enabled) render.enabled = true;
 
         }
     }
@@ -58,26 +57,19 @@ public class PriestController : MonoBehaviour
     {
         generating = true;
         yield return new WaitForSeconds(coolDown);
-        currentGold += addGold;
-        currentGold = currentGold < maxGold ? currentGold : maxGold;
-        generating = false;
+        currentGold = maxGold;
     }
 
     public void takeGold()
     {
+        generating = false;
         GameManager.instance.resources.resources += currentGold;
         currentGold = 0;
-        addGold += 1;
-        maxGold = addGold * ratio;
-        MB.SetActive(false);
+        MB.GetComponent<MoneyBagSpinner>().SetDeactive();
     }
 
-    public void deathSound() 
+    public void deathSound()
     {
         Source.Play();
     }
 }
-
-        addGold += 1;
-        maxGold = addGold * ratio;
-        MB.GetComponent<MoneyBagSpinner>().SetDeactive();

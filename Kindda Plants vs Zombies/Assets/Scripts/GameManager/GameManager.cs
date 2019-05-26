@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
                 music.clip = Resources.Load("Gathering_of_the_Dark_Hordes__1_Min_Loop") as AudioClip;
                 break;
             case 6:
-                Debug.Log("Audio Lvl 5");
+                Debug.Log("Audio Lvl 6");
                 nameLvl = "Night: The Next Morning";
                 music.clip = Resources.Load("Gathering_of_the_Dark_Hordes__1_Min_Loop") as AudioClip;
                 break;

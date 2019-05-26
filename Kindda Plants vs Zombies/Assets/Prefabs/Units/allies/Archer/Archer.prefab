@@ -2834,8 +2834,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
-  dmg: 15
-  AttackSpeed: 0.8
+  dmg: 20
+  AttackSpeed: 1
   vel: 0
   range: 9
   gold: 75
