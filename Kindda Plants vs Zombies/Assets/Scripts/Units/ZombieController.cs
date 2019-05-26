@@ -35,10 +35,8 @@ public class ZombieController : MonoBehaviour
     {
         if (transform.position.x < 0)
         {
-            // TODO: afegir final joc!
-            //Destroy(transform.gameObject);
             StartCoroutine(startAttack());
-            GameManager.instance.GameLost();
+            if(!GameManager.instance.lostGame) GameManager.instance.GameLost();
             return;
         }
         if (attackTarget == null)
@@ -79,6 +77,7 @@ public class ZombieController : MonoBehaviour
             // Kill unit if health <= 0
             if (attackTarget.GetComponent<Stats>().health <= 0)
             {
+                attackTarget.GetComponent<HealthBar>().destroyBar();
                 attackTarget.GetComponent<Death>().UnitDeath();
                 attackTarget = null;
             }

@@ -63,6 +63,12 @@ public class GameManager : MonoBehaviour
     {
         lostGame = true;
         pause = false;
+
+        Debug.Log("Start Audio Lost");
+        music.clip = Resources.Load("Battle_Lost__6s") as AudioClip;
+        music.Play();
+        music.loop = false;
+
         board.enabled = false;
         resources.enabled = false;
         gameInteraction.enabled = false;
@@ -147,5 +153,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("Start Audio");
         music.Play();
         music.loop = true;
+    }
+
+    public void playTriumph()
+    {
+        Debug.Log("Start Audio Triumph");
+        music.clip = Resources.Load("Final_Glorious_Triumph__10s") as AudioClip;
+        music.Play();
+        music.loop = false;
     }
 }

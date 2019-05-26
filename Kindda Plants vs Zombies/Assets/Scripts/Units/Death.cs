@@ -8,7 +8,8 @@ public class Death : MonoBehaviour
         sts.vel = 0;
         if (tag == "enemy")
         {
-            GameManager.instance.resources.resources += sts.gold;
+            //GameManager.instance.resources.resources += sts.gold;
+            GameManager.instance.enemyGenerator.numEnemiesWave--;
         }
         else if (tag == "ally")
         {

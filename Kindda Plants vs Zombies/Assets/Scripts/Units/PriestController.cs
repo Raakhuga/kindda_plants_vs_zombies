@@ -13,7 +13,6 @@ public class PriestController : MonoBehaviour
     public GameObject MoneyBag;
 
     private GameObject MB;
-    private int ratio;
     private Stats sts;
     private Animator anim;
     private bool generating = false;
@@ -24,9 +23,6 @@ public class PriestController : MonoBehaviour
         sts = GetComponent<Stats>();
         anim = GetComponent<Animator>();
         anim.SetBool("FullGold", false);
-
-        ratio = (int)(maxGold / addGold);
-        ratio = ratio < 2 ? 2 : ratio;
 
         Vector3 pos = new Vector3(transform.position.x, 1.75f, transform.position.z);
         //Vector3 camPos = new Vector3(transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
@@ -69,8 +65,6 @@ public class PriestController : MonoBehaviour
     {
         GameManager.instance.resources.resources += currentGold;
         currentGold = 0;
-        addGold += 1;
-        maxGold = addGold * ratio;
         MB.SetActive(false);
     }
 

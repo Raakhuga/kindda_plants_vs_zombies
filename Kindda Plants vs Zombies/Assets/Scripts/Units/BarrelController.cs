@@ -22,7 +22,11 @@ public class BarrelController : MonoBehaviour
 
     	foreach (Collider col in colliders) 
     	{
-    		if (col.gameObject.name == "HitBox") col.gameObject.transform.parent.gameObject.GetComponent<Death>().UnitDeath();
+            if (col.gameObject.name == "HitBox")
+            {
+                col.gameObject.GetComponent<HealthBar>().destroyBar();
+                col.gameObject.transform.parent.gameObject.GetComponent<Death>().UnitDeath();
+            }
     	}
 
     	Destroy(gameObject);

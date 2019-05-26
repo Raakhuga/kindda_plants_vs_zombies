@@ -41,6 +41,7 @@ public class PaladinController : MonoBehaviour
             // Kill unit if health <= 0
             if (attackTarget.GetComponent<Stats>().health <= 0)
             {
+                attackTarget.GetComponent<HealthBar>().destroyBar();
                 attackTarget.GetComponent<Death>().UnitDeath();
                 attackTarget = null;
             }

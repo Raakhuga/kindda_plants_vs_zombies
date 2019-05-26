@@ -184,6 +184,7 @@ MonoBehaviour:
   pause: 0
   lostGame: 0
   currentLvl: 0
+  nameLvl: 
   music: {fileID: 1318298718247185270}
 --- !u!114 &8977382333198302341
 MonoBehaviour:
@@ -251,8 +252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Zombie: {fileID: 888062534140793985, guid: 5b7180e3f3c39014eb92791c71d1e7a2, type: 3}
-  Tank: {fileID: 888062534140793985, guid: 5b7180e3f3c39014eb92791c71d1e7a2, type: 3}
-  Dragon: {fileID: 888062534140793985, guid: 5b7180e3f3c39014eb92791c71d1e7a2, type: 3}
+  Tank: {fileID: 1000010759127040, guid: 134568deae123e7488798bf153729a7a, type: 3}
+  Dragon: {fileID: 1481049347905476, guid: 206d8e1eba9a51947a111fb9153797ec, type: 3}
   numEnemiesWave: 0
 --- !u!114 &8162216435271978396
 MonoBehaviour:

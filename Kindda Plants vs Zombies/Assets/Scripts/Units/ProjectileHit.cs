@@ -10,14 +10,15 @@ public class ProjectileHit : MonoBehaviour
         GameObject weapon = transform.parent.gameObject;
         if (col.gameObject.CompareTag(target)  && weapon.transform.position.x < 9)
         {
-            GameObject target = col.gameObject.transform.parent.gameObject;
-            target.GetComponent<Stats>().health -= dmg;
-            target.GetComponent<HealthBar>().actHBar();
+            GameObject attktarget = col.gameObject.transform.parent.gameObject;
+            attktarget.GetComponent<Stats>().health -= dmg;
+            attktarget.GetComponent<HealthBar>().actHBar();
 
             // Kill unit if health <= 0
-            if (target.GetComponent<Stats>().health <= 0)
+            if (attktarget.GetComponent<Stats>().health <= 0)
             {
-                target.GetComponent<Death>().UnitDeath();
+                attktarget.GetComponent<HealthBar>().destroyBar();
+                attktarget.GetComponent<Death>().UnitDeath();
             }
 
             Destroy(transform.parent.gameObject);
