@@ -33,23 +33,23 @@ public class HealthBar : MonoBehaviour
     public IEnumerator changeValue()
     {
         float pct = sts.health / InitialHealth;
-        float initPct = HBfill.fillAmount;
         float speed = 0.2f;
-        if (newHBar != null)
+        if (newHBar != null && HBfill != null)
         {
+        float initPct = HBfill.fillAmount;
             if (!newHBar.activeSelf)
             {
                 newHBar.SetActive(true);
             }
-            for (float elapsed = 0; elapsed < speed; elapsed += Time.deltaTime)
+            for (float elapsed = 0; elapsed < speed && HBfill != null; elapsed += Time.deltaTime)
             {
                 HBfill.fillAmount = Mathf.Lerp(initPct, pct, elapsed / speed);
                 //Debug.Log(elapsed);
                 yield return null;
             }
+        if (HBfill != null)HBfill.fillAmount = pct;
         }
         //if (tag == "enemy") Debug.Log("hooo");
-        HBfill.fillAmount = pct;
     }
 
     public void destroyBar()

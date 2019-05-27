@@ -1411,7 +1411,7 @@ MonoBehaviour:
   health: 300
   dmg: 25
   AttackSpeed: 2
-  vel: 4
+  vel: 2
   range: 1
   gold: 50
 --- !u!114 &1249129038997122677

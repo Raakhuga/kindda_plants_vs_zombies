@@ -10,9 +10,6 @@ public class EnemyGen : MonoBehaviour
 
     public int numEnemiesWave = 0;
 
-    public int numWaves;
-    public int numUnits;
-
     public int tmpEn = 0;
 
     private int ncols;
@@ -99,8 +96,8 @@ public class EnemyGen : MonoBehaviour
         float startCoolDown = 1;
         float unitCoolDown = 3;
         float waveCoolDown = 3;
-        numWaves = 2;
-        numUnits = 3;
+        int numWaves = 2;
+        int numUnits = 3;
         tmpEn = 0;
         int lastColVal = -1;
 
@@ -137,7 +134,7 @@ public class EnemyGen : MonoBehaviour
         startingCol = GameManager.instance.board.startingCol;
         float startCoolDown = 15;
         float unitCoolDown = 4;
-        float waveCoolDown = 10;
+        float waveCoolDown = 12;
         int numWaves = 3;
         int numUnits = 8;
         int lastColVal = -1;
@@ -172,10 +169,12 @@ public class EnemyGen : MonoBehaviour
         startingCol = GameManager.instance.board.startingCol;
         float startCoolDown = 15;
         float unitCoolDown = 4;
-        float waveCoolDown = 10;
+        float waveCoolDown = 12;
         int numWaves = 4;
-        int numUnits = 10;
+        int numUnits = 15;
         int lastColVal = -1;
+
+        numEnemiesWave = numUnits * numWaves;
 
         yield return new WaitForSeconds(startCoolDown);
         for (int w = 0; w < numWaves; w++)
@@ -220,10 +219,12 @@ public class EnemyGen : MonoBehaviour
         startingCol = GameManager.instance.board.startingCol;
         float startCoolDown = 15;
         float unitCoolDown = 4;
-        float waveCoolDown = 10;
+        float waveCoolDown = 15;
         int numWaves = 6;
         int numUnits = 15;
         int lastColVal = -1;
+
+        numEnemiesWave = numUnits * numWaves;
 
         yield return new WaitForSeconds(startCoolDown);
         for (int w = 0; w < numWaves; w++)
