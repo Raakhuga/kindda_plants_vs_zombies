@@ -103,11 +103,11 @@ public class GameManager : MonoBehaviour
         {
             initGame();
         }
-        ChangeLevel();
+        initLevel();
         playMusic();
     }
 
-    private void ChangeLevel()
+    private void initLevel()
     {
         switch (currentLvl)
         {
