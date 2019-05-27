@@ -81,6 +81,8 @@ public class EnemyGen : MonoBehaviour
 
     IEnumerator levelSucced()
     {
+        int secondsWaitLoad = 6;
+        if (GameManager.instance.currentLvl == 0 || GameManager.instance.currentLvl == 6) secondsWaitLoad += 14;
         yield return new WaitForSeconds(6);
         GameManager.instance.currentLvl = (GameManager.instance.currentLvl + 1) % 7;
         Debug.Log("Level " + GameManager.instance.currentLvl);

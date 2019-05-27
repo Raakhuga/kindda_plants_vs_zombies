@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public int currentLvl;
     public string nameLvl;
 
+    public bool lastGame = false;
+
     public AudioSource music;
 
     void Awake()
@@ -109,6 +111,7 @@ public class GameManager : MonoBehaviour
 
     private void initLevel()
     {
+        lastGame = false;
         switch (currentLvl)
         {
             case 1:
@@ -138,6 +141,7 @@ public class GameManager : MonoBehaviour
                 break;
             case 6:
                 Debug.Log("Audio Lvl 6");
+                lastGame = true;
                 nameLvl = "Night: The Next Morning";
                 music.clip = Resources.Load("Gathering_of_the_Dark_Hordes__1_Min_Loop") as AudioClip;
                 break;
@@ -157,8 +161,15 @@ public class GameManager : MonoBehaviour
 
     public void playTriumph()
     {
+        if (currentLvl == 6)
+        {
+            music.clip = Resources.Load("Final_Glorious_Triumph__10s") as AudioClip;
+        }
+        else
+        {
+            music.clip = Resources.Load("Final_Glorious_Triumph__10s") as AudioClip;
+        }
         Debug.Log("Start Audio Triumph");
-        music.clip = Resources.Load("Final_Glorious_Triumph__10s") as AudioClip;
         music.Play();
         music.loop = false;
     }
