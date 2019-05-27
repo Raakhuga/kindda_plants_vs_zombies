@@ -22,7 +22,7 @@ public class ResourcesController : MonoBehaviour
                 break;
             case 4:
                 Debug.Log("Resources Lvl 4");
-                resources = 200;
+                resources = 300;
                 break;
             case 5:
                 Debug.Log("Resources Lvl 5");

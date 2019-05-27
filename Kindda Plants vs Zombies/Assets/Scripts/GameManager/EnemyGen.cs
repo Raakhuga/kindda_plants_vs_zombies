@@ -265,6 +265,7 @@ public class EnemyGen : MonoBehaviour
         Debug.Log("Zombie instance");
         GameObject aux = Instantiate(unit, new Vector3(Random.Range(12, 14), 0.06F, col), transform.rotation, enemies);
         aux.transform.Rotate(0F, -90F, 0);
-        aux.GetComponent<Stats>().vel += Random.Range(-0.25f, 0.05f); // Little random enemy velocity
+        float vel = unit.GetComponent<Stats>().vel;
+        aux.GetComponent<Stats>().vel += Random.Range(-vel*0.25f, vel*0.15f); // Little random enemy velocity
     }
 }
