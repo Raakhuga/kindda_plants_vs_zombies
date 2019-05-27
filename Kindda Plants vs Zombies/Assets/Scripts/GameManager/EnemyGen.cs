@@ -26,32 +26,38 @@ public class EnemyGen : MonoBehaviour
 
     public void startLvlWaveCoroutine()
     {
-        switch (GameManager.instance.currentLvl)
+        if (!started)
         {
-            case 1:
-                Debug.Log("Wave Lvl 1");
-                StartCoroutine(wavesLvl1());
-                break;
-            case 2:
-                Debug.Log("Wave Lvl 2");
-                StartCoroutine(wavesLvl2());
-                break;
-            case 3:
-                Debug.Log("Wave Lvl 3");
-                StartCoroutine(wavesLvl3());
-                break;
-            case 4:
-                Debug.Log("Wave Lvl 4");
-                StartCoroutine(wavesLvl1());
-                break;
-            case 5:
-                Debug.Log("Wave Lvl 5");
-                StartCoroutine(wavesLvl2());
-                break;
-            default:
-                Debug.Log("Wave default");
-                StartCoroutine(wavesLvl3());
-                break;
+            switch (GameManager.instance.currentLvl)
+            {
+                case 1:
+                    Debug.Log("Wave Lvl 1");
+                    StartCoroutine(wavesLvl1());
+                    break;
+                case 2:
+                    Debug.Log("Wave Lvl 2");
+                    StartCoroutine(wavesLvl2());
+                    break;
+                case 3:
+                    Debug.Log("Wave Lvl 3");
+                    StartCoroutine(wavesLvl3());
+                    break;
+                case 4:
+                    Debug.Log("Wave Lvl 4");
+                    StartCoroutine(wavesLvl1());
+                    break;
+                case 5:
+                    Debug.Log("Wave Lvl 5");
+                    StartCoroutine(wavesLvl2());
+                    break;
+                case 6:
+                    Debug.Log("Wave Lvl 6");
+                    StartCoroutine(wavesLvl3());
+                    break;
+                default:
+                    Debug.Log("Wave default");
+                    break;
+            }
         }
         started = true;
     }
@@ -75,56 +81,16 @@ public class EnemyGen : MonoBehaviour
 
     IEnumerator levelSucced()
     {
-        started = false;
         yield return new WaitForSeconds(6);
         GameManager.instance.currentLvl = (GameManager.instance.currentLvl + 1) % 7;
         Debug.Log("Level " + GameManager.instance.currentLvl);
-        if (GameManager.instance.currentLvl > 0)
-        {
-            SceneManager.LoadScene("Level");
-        }
-        else
+        if (GameManager.instance.currentLvl == 0 || GameManager.instance.currentLvl == 4)
         {
             SceneManager.LoadScene("MenuStartGame");
         }
-    }
-
-    IEnumerator waveProva()
-    {
-        ncols = GameManager.instance.board.ncols;
-        startingCol = GameManager.instance.board.startingCol;
-        float startCoolDown = 1;
-        float unitCoolDown = 3;
-        float waveCoolDown = 3;
-        int numWaves = 2;
-        int numUnits = 3;
-        tmpEn = 0;
-        int lastColVal = -1;
-
-        numEnemiesWave = numUnits * numWaves;
-        started = true;
-
-        yield return new WaitForSeconds(startCoolDown);
-        for (int w = 0; w < numWaves; w++)
+        else
         {
-            Debug.Log("Num Wave: " + w + " " + Time.time);
-            for (int i = 0; i < numUnits; i++)
-            {
-                Debug.Log("New enemy unit: " + i + " " + Time.time);
-                int newCol = Random.Range(0, ncols) + startingCol;
-                while (ncols > 2 && newCol == lastColVal)
-                {
-                    newCol = Random.Range(0, ncols) + startingCol;
-                }
-                lastColVal = newCol;
-                if (tmpEn < numWaves * numUnits)
-                {
-                    instantiateMonster(newCol, Zombie);
-                }
-                tmpEn++;
-                yield return new WaitForSeconds(unitCoolDown);
-            }
-            yield return new WaitForSeconds(waveCoolDown);
+            SceneManager.LoadScene("Level");
         }
     }
 
@@ -133,10 +99,10 @@ public class EnemyGen : MonoBehaviour
         ncols = GameManager.instance.board.ncols;
         startingCol = GameManager.instance.board.startingCol;
         float startCoolDown = 15;
-        float unitCoolDown = 4;
+        float unitCoolDown = 5;
         float waveCoolDown = 12;
         int numWaves = 3;
-        int numUnits = 8;
+        int numUnits = 6;
         int lastColVal = -1;
 
         numEnemiesWave = numUnits * numWaves;
@@ -169,12 +135,15 @@ public class EnemyGen : MonoBehaviour
         startingCol = GameManager.instance.board.startingCol;
         float startCoolDown = 15;
         float unitCoolDown = 4;
-        float waveCoolDown = 12;
+        float waveCoolDown = 10;
         int numWaves = 4;
-        int numUnits = 15;
+        int numUnits = 12;
         int lastColVal = -1;
 
         numEnemiesWave = numUnits * numWaves;
+
+        int probDragon = -1;
+        int probTank = 20;
 
         yield return new WaitForSeconds(startCoolDown);
         for (int w = 0; w < numWaves; w++)
@@ -189,23 +158,21 @@ public class EnemyGen : MonoBehaviour
                     newCol = Random.Range(0, ncols) + startingCol;
                 }
                 lastColVal = newCol;
-                int unitGenerated = Random.Range(0, 100);
-                if (unitGenerated > 90)
+
+                if (w == 1)
                 {
-                    instantiateMonster(newCol, Tank);
+                    probTank = 30;
                 }
-                else if (w > 1 && unitGenerated > 80)
+                else if (w == 2)
                 {
-                    instantiateMonster(newCol, Tank);
+                    probTank = 40;
                 }
-                else if (w > 2 && unitGenerated > 60)
+                else if (w == 3)
                 {
-                    instantiateMonster(newCol, Tank);
+                    probTank = 50;
                 }
-                else
-                {
-                    instantiateMonster(newCol, Zombie);
-                }
+                instancePerPercentage(probDragon, probTank, newCol);
+
                 yield return new WaitForSeconds(unitCoolDown);
             }
             yield return new WaitForSeconds(waveCoolDown);
@@ -224,12 +191,20 @@ public class EnemyGen : MonoBehaviour
         int numUnits = 15;
         int lastColVal = -1;
 
-        numEnemiesWave = numUnits * numWaves;
+        numEnemiesWave = numUnits * numWaves + 10;
+
+        int probDragon = 5;
+        int probTank = 40;
 
         yield return new WaitForSeconds(startCoolDown);
         for (int w = 0; w < numWaves; w++)
         {
             Debug.Log("Num Wave: " + w + " " + Time.time);
+            if (w == 5)
+            {
+                numUnits += 10;
+                unitCoolDown = 2;
+            }
             for (int i = 0; i < numUnits; i++)
             {
                 Debug.Log("New enemy unit: " + i + " " + Time.time);
@@ -239,38 +214,47 @@ public class EnemyGen : MonoBehaviour
                     newCol = Random.Range(0, ncols) + startingCol;
                 }
                 lastColVal = newCol;
-                int unitGenerated = Random.Range(0, 100);
-                if(w > 2 && unitGenerated > 90)
+                if (w == 1)
                 {
-                    instantiateMonster(newCol, Dragon);
+                    probDragon = 15;
+                    probTank = 45;
                 }
-                else if (w > 3 && unitGenerated > 80)
+                else if (w == 3)
                 {
-                    instantiateMonster(newCol, Dragon);
+                    probDragon = 25;
+                    probTank = 55;
                 }
-                else if (w > 4 && unitGenerated > 70)
+                else if (w == 4)
                 {
-                    instantiateMonster(newCol, Dragon);
+                    probDragon = 35;
+                    probTank = 60;
                 }
-                else if (unitGenerated > 60)
+                else if (w == 5)
                 {
-                    instantiateMonster(newCol, Tank);
+                    probDragon = 45;
+                    probTank = 60;
                 }
-                else if (w > 1 && unitGenerated > 40)
-                {
-                    instantiateMonster(newCol, Tank);
-                }
-                else if (w > 2 && unitGenerated > 30)
-                {
-                    instantiateMonster(newCol, Tank);
-                }
-                else
-                {
-                    instantiateMonster(newCol, Zombie);
-                }
+                instancePerPercentage(probDragon, probTank, newCol);
                 yield return new WaitForSeconds(unitCoolDown);
             }
             yield return new WaitForSeconds(waveCoolDown);
+        }
+    }
+
+    private void instancePerPercentage(int probDrag, int probTank, int column)
+    {
+        int unitGenerated = Random.Range(0, 100);
+        if (unitGenerated > (100 - probDrag))
+        {
+            instantiateMonster(column, Dragon);
+        }
+        else if (unitGenerated > (100 - probDrag - probTank))
+        {
+            instantiateMonster(column, Tank);
+        }
+        else
+        {
+            instantiateMonster(column, Zombie);
         }
     }
 

@@ -2834,11 +2834,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
-  dmg: 20
+  dmg: 15
   AttackSpeed: 1
   vel: 0
   range: 9
-  gold: 75
+  gold: 100
 --- !u!114 &914
 MonoBehaviour:
   m_ObjectHideFlags: 0

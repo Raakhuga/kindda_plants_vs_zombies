@@ -1408,8 +1408,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260317cbf9ac27b4b8229a33dfbc9197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 300
-  dmg: 25
+  health: 250
+  dmg: 100
   AttackSpeed: 2
   vel: 2
   range: 1

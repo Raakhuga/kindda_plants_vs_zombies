@@ -211,12 +211,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a78964b03b2e46e4bb622ba21bd07de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Priest: {fileID: 196, guid: d3e4c6b9017de6743890b41d1b42762a, type: 3}
+  Priest: {fileID: 238, guid: d3e4c6b9017de6743890b41d1b42762a, type: 3}
   Archer: {fileID: 410, guid: 8b9efb018beb13b418672e9efae882c1, type: 3}
-  Paladin: {fileID: 300, guid: 243ccd31047248a4784359d0a931ef98, type: 3}
+  Paladin: {fileID: 342, guid: 243ccd31047248a4784359d0a931ef98, type: 3}
   Barricade: {fileID: 7477902321612069491, guid: 319564f108d286a4c9aedf6377d252c0,
     type: 3}
-  Barrel: {fileID: 424, guid: ae95d385019def448981b67e58f4dcc2, type: 3}
+  Barrel: {fileID: 456, guid: ae95d385019def448981b67e58f4dcc2, type: 3}
   selectedUnitIdx: 0
   selectedUnitName: 
 --- !u!114 &8977382333198302343
@@ -255,6 +255,8 @@ MonoBehaviour:
   Tank: {fileID: 1000010759127040, guid: 134568deae123e7488798bf153729a7a, type: 3}
   Dragon: {fileID: 1481049347905476, guid: 206d8e1eba9a51947a111fb9153797ec, type: 3}
   numEnemiesWave: 0
+  tmpEn: 0
+  started: 0
 --- !u!114 &8162216435271978396
 MonoBehaviour:
   m_ObjectHideFlags: 0

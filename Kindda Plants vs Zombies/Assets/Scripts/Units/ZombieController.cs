@@ -31,7 +31,7 @@ public class ZombieController : MonoBehaviour
             GameObject Flames = transform.Find("Root/Spine1/Spine2/Chest/Neck1/Neck2/Neck3/Neck4/Head/UpperHead1/Flames").gameObject;
             Renderer render = Flames.GetComponent<Renderer>();
             render.enabled = false;
-        } 
+        }
 
         target = "ally";
 
@@ -43,7 +43,9 @@ public class ZombieController : MonoBehaviour
         if (transform.position.x < 0)
         {
             StartCoroutine(startAttack());
-            if(!GameManager.instance.lostGame) GameManager.instance.GameLost();
+            if (!GameManager.instance.lostGame && GameManager.instance.enemyGenerator.numEnemiesWave != 0) {
+                GameManager.instance.GameLost();
+            }
             return;
         }
         if (attackTarget == null)
@@ -101,11 +103,11 @@ public class ZombieController : MonoBehaviour
         }
     }
 
-    public void deathSound() 
+    public void deathSound()
     {
         Source.clip = Death;
         Source.Play();
-        
+
         if (transform.Find("Root/Spine1/Spine2/Chest/Neck1/Neck2/Neck3/Neck4/Head/UpperHead1/Flames") != null)
         {
             GameObject Flames = transform.Find("Root/Spine1/Spine2/Chest/Neck1/Neck2/Neck3/Neck4/Head/UpperHead1/Flames").gameObject;
@@ -114,7 +116,7 @@ public class ZombieController : MonoBehaviour
         }
     }
 
-    void playHit() 
+    void playHit()
     {
         Source.Play();
     }

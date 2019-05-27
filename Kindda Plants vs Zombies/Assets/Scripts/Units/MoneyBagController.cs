@@ -2,7 +2,7 @@
 
 public class MoneyBagController : MonoBehaviour
 {
-    public int gold = 25;
+    public int gold = 50;
 
     private float yMin = 0;
 

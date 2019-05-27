@@ -10,27 +10,31 @@ public class ResourcesController : MonoBehaviour
         {
             case 1:
                 Debug.Log("Resources Lvl 1");
-                resources = 50;
+                resources = 100;
                 break;
             case 2:
                 Debug.Log("Resources Lvl 2");
-                resources = 100;
+                resources = 150;
                 break;
             case 3:
                 Debug.Log("Resources Lvl 3");
-                resources = 150;
+                resources = 500;
                 break;
             case 4:
                 Debug.Log("Resources Lvl 4");
-                resources = 50;
+                resources = 200;
                 break;
             case 5:
                 Debug.Log("Resources Lvl 5");
-                resources = 50;
+                resources = 300;
+                break;
+            case 6:
+                Debug.Log("Resources Lvl 6");
+                resources = 1000;
                 break;
             default:
                 Debug.Log("Resources default");
-                resources = 150;
+                resources = 0;
                 break;
         }
     }

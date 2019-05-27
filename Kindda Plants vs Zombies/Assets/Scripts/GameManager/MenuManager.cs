@@ -6,18 +6,29 @@ using UnityEditor;
 
 public class MenuManager : MonoBehaviour
 {
+
+    public bool instructions = false;
+    public GameObject insts;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Quit();
         }
+
+        insts.SetActive(instructions);
     }
 
     public void StartLevel(int levelIdx)
     {
         GameManager.instance.currentLvl = levelIdx;
         SceneManager.LoadScene("Level");
+    }
+
+    public void Instructions()
+    {
+        instructions = !instructions;
     }
 
     public void Quit()
