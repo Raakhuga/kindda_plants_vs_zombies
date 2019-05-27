@@ -117,33 +117,33 @@ public class GameManager : MonoBehaviour
             case 1:
                 Debug.Log("Audio Lvl 1");
                 nameLvl = "Day: The Noon";
-                music.clip = Resources.Load("Time_for_Battle__30s_Loop") as AudioClip;
+                music.clip = Resources.Load("Fantasy_Celtic_Music_-_Spirit_of_the_Wild") as AudioClip;
                 break;
             case 2:
                 Debug.Log("Audio Lvl 2");
                 nameLvl = "Day: The Afteroon";
-                music.clip = Resources.Load("Time_for_Battle__30s_Loop") as AudioClip;
+                music.clip = Resources.Load("Epic_Celtic_Battle_Music_-_Battle_For_Camelot_Tartalo_Music") as AudioClip;
                 break;
             case 3:
                 Debug.Log("Audio Lvl 3");
                 nameLvl = "Day: The Dusk";
-                music.clip = Resources.Load("Time_for_Battle__30s_Loop") as AudioClip;
+                music.clip = Resources.Load("Celtic_battle_music_-_The_King_of_The_Highlands") as AudioClip;
                 break;
             case 4:
                 Debug.Log("Audio Lvl 4");
                 nameLvl = "Night: The Night";
-                music.clip = Resources.Load("Gathering_of_the_Dark_Hordes__1_Min_Loop") as AudioClip;
+                music.clip = Resources.Load("Two_Steps_From_Hell_-_Victory") as AudioClip;
                 break;
             case 5:
                 Debug.Log("Audio Lvl 5");
                 nameLvl = "Night: The Midnight";
-                music.clip = Resources.Load("Gathering_of_the_Dark_Hordes__1_Min_Loop") as AudioClip;
+                music.clip = Resources.Load("Two_Steps_From_Hell_-_Blackheart_Thomas_Bergersen_-_Epic_Dark_Melancholic_Dramatic") as AudioClip;
                 break;
             case 6:
                 Debug.Log("Audio Lvl 6");
                 lastGame = true;
                 nameLvl = "Night: The Next Morning";
-                music.clip = Resources.Load("Gathering_of_the_Dark_Hordes__1_Min_Loop") as AudioClip;
+                music.clip = Resources.Load("Two_Steps_From_Hell_-_Impossible_EXTENDED_Special_Edition") as AudioClip;
                 break;
             default:
                 Debug.Log("Audio default");
