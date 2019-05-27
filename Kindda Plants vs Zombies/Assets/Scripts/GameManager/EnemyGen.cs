@@ -80,9 +80,16 @@ public class EnemyGen : MonoBehaviour
     {
         started = false;
         yield return new WaitForSeconds(6);
-        GameManager.instance.currentLvl++;
+        GameManager.instance.currentLvl = (GameManager.instance.currentLvl + 1) % 7;
         Debug.Log("Level " + GameManager.instance.currentLvl);
-        SceneManager.LoadScene("Level");
+        if (GameManager.instance.currentLvl > 0)
+        {
+            SceneManager.LoadScene("Level");
+        }
+        else
+        {
+            SceneManager.LoadScene("MenuStartGame");
+        }
     }
 
     IEnumerator waveProva()

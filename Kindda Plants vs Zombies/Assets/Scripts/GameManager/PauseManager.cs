@@ -42,7 +42,13 @@ public class PauseManager : MonoBehaviour
     {
         GameManager.instance.currentLvl = (GameManager.instance.currentLvl + 1) % 7;
         Debug.Log("Skip to Lvl " + GameManager.instance.currentLvl);
-        SceneManager.LoadScene("Level");
+        if(GameManager.instance.currentLvl  > 0)
+        {
+            SceneManager.LoadScene("Level");
+        }
+        else {
+            SceneManager.LoadScene("MenuStartGame");
+        }
     }
 
     public void Quit()
